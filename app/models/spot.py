@@ -17,9 +17,9 @@ class Spot(db.Model):
     updated_at = db.Column(db.DateTime(), nullable=True, default=datetime.now())
 
     users = db.relationship('User', back_populates='spots')
-    bookings = db.relationship('Booking', back_populates='spots', cascade="all, delete")
-    reviews = db.relationship('Review', back_populates='spots', cascade="all, delete")
     images = db.relationship('Image', back_populates='spots', cascade="all, delete")
+    # bookings = db.relationship('Booking', back_populates='spots', cascade="all, delete")
+    # reviews = db.relationship('Review', back_populates='spots', cascade="all, delete")
 
     def to_dict(self):
         return {
@@ -30,7 +30,7 @@ class Spot(db.Model):
             'address': self.address,
             'city': self.city,
             'state': self.state,
-            'price': self.price,
+            'price': str(self.price),
             'guest_limit': self.guest_limit,
             "created_at": self.created_at,
             "updated_at": self.updated_at,

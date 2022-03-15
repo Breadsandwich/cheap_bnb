@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SubmitField, DecimalField, FileField
+from wtforms import StringField, IntegerField, SubmitField, DecimalField, FileField, FloatField
 from wtforms.validators import DataRequired, ValidationError, Length, NumberRange
 
 class SpotForm(FlaskForm):

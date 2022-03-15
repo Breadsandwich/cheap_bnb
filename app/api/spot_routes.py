@@ -19,8 +19,8 @@ def validation_errors_to_error_messages(validation_errors):
 # CRUD routes
 
 # -- create spots --
-@spot_routes('/', methods=['POST'])
-@login_required
+@spot_routes.route('/new', methods=['POST'])
+# @login_required
 def create_spot():
   form = SpotForm()
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -61,7 +61,7 @@ def get_one_spot(spotId):
 
 # -- update spots --
 @spot_routes.route("/<int:spotId>", methods=['PUT'])
-@login_required
+# @login_required
 def update_spot(spotId):
   form = SpotForm()
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -87,7 +87,7 @@ def update_spot(spotId):
 # -- delete spots --
 
 @spot_routes.route("/<int:spotId>", methods=['DELETE'])
-@login_required
+# @login_required
 def delete_spot(spotId):
   spot = Spot.query.get(spotId)
   db.session.delete(spot)
