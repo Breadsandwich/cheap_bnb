@@ -16,7 +16,7 @@ class Spot(db.Model):
     created_at = db.Column(db.DateTime(), nullable=False, default=datetime.now())
     updated_at = db.Column(db.DateTime(), nullable=True, default=datetime.now())
 
-    user = db.relationship('User', back_populates='spots')
+    users = db.relationship('User', back_populates='spots')
     bookings = db.relationship('Booking', back_populates='spots', cascade="all, delete")
     reviews = db.relationship('Review', back_populates='spots', cascade="all, delete")
     images = db.relationship('Image', back_populates='spots', cascade="all, delete")
@@ -32,4 +32,5 @@ class Spot(db.Model):
             'state': self.state,
             'price': self.price,
             'guest_limit': self.guest_limit,
+            'owner': self.users.username
         }
