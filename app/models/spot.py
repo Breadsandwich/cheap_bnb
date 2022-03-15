@@ -13,8 +13,11 @@ class Spot(db.Model):
     state = db.Column(db.String, nullable=False)
     price = db.Column(db.Numeric(10,2), nullable=False)
     guest_limit = db.Column(db.Integer, nullable=False)
+    images = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime(), nullable=False, default=datetime.now())
     updated_at = db.Column(db.DateTime(), nullable=True, default=datetime.now())
+
+# -- relationships --
 
     users = db.relationship('User', back_populates='spots')
     images = db.relationship('Image', back_populates='spots', cascade="all, delete")
@@ -32,6 +35,7 @@ class Spot(db.Model):
             'state': self.state,
             'price': str(self.price),
             'guest_limit': self.guest_limit,
+            'images': [image.url for image in self.images],
             "created_at": self.created_at,
             "updated_at": self.updated_at,
             'host': self.users.username

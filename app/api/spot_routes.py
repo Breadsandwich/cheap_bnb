@@ -1,9 +1,11 @@
+from crypt import methods
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 import psycopg2
 from app.forms.spot_form import SpotForm
-from app.models import Spot, User, db
+from app.models import Spot, User, db, Image
 from datetime import datetime
+from app.s3_helpers import (upload_file_to_s3, allowed_file, get_unique_filename)
 
 spot_routes = Blueprint('spots', __name__)
 
@@ -44,6 +46,34 @@ def create_spot():
     return {**new_spot.to_dict()}
 
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@spot_routes.route('/<int:spotId>/photos', methods=['POST'])
+def upload_images(spotId):
+  photo_list = []
+
+  if 'images' not in request.files:
+    return {'errors': 'images required'}, 400
+
+  images = request.files.getlist('images')
+
+  for image in images:
+    if not allowed_file(image.filename):
+      return {'errors': 'file type not permitted'}, 400
+
+    image.filename = get_unique_filename(image.filename)
+    upload = upload_file_to_s3(image)
+    if "url" not in upload:
+      return upload, 400
+    url = upload["url"]
+    new_image = Image(spot_id=id, url=url)
+
+    db.session.add(new_image)
+    db.session.commit()
+
+    photo_list.append(url)
+
+  return {'photo_list': photo_list}
 
 
 # -- read spots --
@@ -94,3 +124,20 @@ def delete_spot(spotId):
   db.session.commit()
 
   return {'id': spotId}
+
+
+
+
+#------------ for testing copy paste purposes --------------
+
+# {
+#     "address": "12345",
+#     "city": "Phoenix",
+#     "description": "test spot listing... new spot got updated",
+#     "guest_limit": 5,
+#     "host": "Demo",
+#     "price": "300.00",
+#     "spot_name": "test spot 12345 updated",
+#     "state": "AZ",
+#     "user_id": 1
+# }
