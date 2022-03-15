@@ -34,5 +34,5 @@ class Spot(db.Model):
             'guest_limit': self.guest_limit,
             "created_at": self.created_at,
             "updated_at": self.updated_at,
-            'owner': self.users.username
+            'host': self.users.username
         }

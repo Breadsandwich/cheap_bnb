@@ -30,7 +30,7 @@ def create_spot():
       user_id = form.data['user_id'],
       spot_name = form.data['spot_name'],
       description = form.data['description'],
-       = form.data[''],
+      address = form.data['address'],
       city = form.data['city'],
       state = form.data['state'],
       price = form.data['price'],
