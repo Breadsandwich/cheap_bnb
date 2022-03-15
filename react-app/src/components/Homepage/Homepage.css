@@ -1,0 +1,71 @@
+.homepage_body {
+    padding-top: 25px;
+}
+
+.black_background {
+    display: flex;
+    position: relative;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    height: 380px;
+    width: 100%;
+    margin-bottom: 300px;
+}
+
+.big_card {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: cyan;
+    height: 480px;
+    width: 66%;
+    top: 50%;
+    flex-direction: column;
+}
+
+.big_card_elements {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 20%;
+}
+
+.next_trip_container{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 90%;
+
+}
+
+.next_trip_elements {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+    height: 600px;
+    background-color: pink;
+    left: 6%;
+}
+
+.inspiration_cards {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content:  space-evenly;
+    height: 66%;
+}
+
+.cards {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 100%;
+    width: 18%;
+    background-color: greenyellow;
+
+}
