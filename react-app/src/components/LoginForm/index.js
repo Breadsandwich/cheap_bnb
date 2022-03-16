@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import './LoginForm.css'
 
-const LoginForm = () => {
+const LoginForm = ({setShowModal}) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,7 +15,8 @@ const LoginForm = () => {
   const handleDemo = (demo) => {
     const { email, password } = demo
     dispatch(login(email, password));
-    
+    setShowModal(false)
+
   }
 
 
@@ -23,6 +25,8 @@ const LoginForm = () => {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else{
+      setShowModal(false)
     }
   };
 
@@ -34,17 +38,17 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to='/' />;
-  }
+  // if (user) {
+  //   return <Redirect to='/' />;
+  // }
 
   return (
     <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
+      <div className='errors-div'>
+          {errors.map((error, ind) => (
+            <div className='errors' key={ind}>{error}</div>
+          ))}
+        </div>
       <div>
         <label htmlFor='email'>Email</label>
         <input

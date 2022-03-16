@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import LoginFormModal from '../LoginForm/LoginFormModal';
+import SignupFormModal from '../SignupForm/SignupFormModal';
 import './NavBar.css';
 
 
@@ -29,9 +30,7 @@ const NavBar = () => {
     sessionLinks = (
       <div className='login-signup-links'>
         <LoginFormModal to='/login' exact={true}/>
-        <NavLink to='/sign-up' exact={true} activeClassName='active'>
-          Sign Up
-        </NavLink>
+        <SignupFormModal to='/signup' exact={true}/>
       </div>
     )
     // hostSpot = null;
@@ -45,7 +44,7 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
-      
+
         <li className='session-links'>
           {sessionLinks}
         </li>
