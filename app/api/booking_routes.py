@@ -31,7 +31,7 @@ def create_booking():
       user_id = form.data['user_id'],
       spot_id = form.data['spot_id'],
       start_date = form.data['start_date'],
-      end_date = form.data['end_date'],
+      # end_date = form.data['end_date'],
       guests = form.data['guests'],
       created_at = datetime.now(),
       updated_at = datetime.now()
@@ -40,7 +40,9 @@ def create_booking():
     db.session.add(new_booking)
     db.session.commit()
 
-    return { 'booking': new_booking.to_dict()}
+    return { 'booking': new_booking.to_dict() }
+
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 

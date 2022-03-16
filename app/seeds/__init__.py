@@ -2,6 +2,8 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .spots import seed_spots, undo_spots
 from .images import seed_images, undo_images
+from .reviews import seed_reviews, undo_reviews
+from .booking import seed_bookings, undo_bookings
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -14,6 +16,8 @@ def seed():
     seed_users()
     seed_spots()
     seed_images()
+    seed_reviews()
+    seed_bookings()
     # Add other seed functions here
 
 
@@ -23,4 +27,6 @@ def undo():
     undo_users()
     undo_spots()
     undo_images()
+    undo_reviews()
+    undo_bookings()
     # Add other undo functions here
