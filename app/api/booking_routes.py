@@ -33,9 +33,6 @@ def create_booking():
       start_date = form.data['start_date'],
       end_date = form.data['end_date'],
       guests = form.data['guests'],
-      user_id = form.data['user_id'],
-      user_id = form.data['user_id'],
-      user_id = form.data['user_id'],
       created_at = datetime.now(),
       updated_at = datetime.now()
     )
