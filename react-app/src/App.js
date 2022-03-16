@@ -10,6 +10,7 @@ import { authenticate } from './store/session';
 import Homepage from './components/Homepage/Homepage';
 import NavBar from './components/NavBar/NavBar';
 import Spots from './components/Spots/Spots';
+import SpotPage from './components/SpotPage/SpotPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,6 +38,10 @@ function App() {
 
         <Route path='/spots' exact={true}>
           <Spots />
+        </Route>
+
+        <Route path='/spots/:spotId'>
+          <SpotPage />
         </Route>
 
       </Switch>
