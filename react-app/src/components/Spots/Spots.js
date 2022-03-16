@@ -21,10 +21,23 @@ const Spots = () => {
             <div className="left_container">
                 <h1>left container</h1>
                 <div className="all_spots_container">
-                    <div className="spot_box">some listed spot to map</div>
-                    <div className="spot_box">some listed spot to map</div>
-                    <div className="spot_box">some listed spot to map</div>
-                    <div className="spot_box">some listed spot to map</div>
+                    {spots.map((spot) => (
+                        <a key={spot?.id} href={`/spots/${spot?.id}`}>
+                            <div className="spot_box">
+                                <div className="spot_name">
+                                    <h3>{spot?.spot_name}</h3>
+                                    <p>host name here</p>
+                                </div>
+                                <div>
+                                    <img
+                                        className="spot_img"
+                                        src={spot?.images[0]} alt="spot_image"
+                                        onError={e => e.target.style.display = 'none'}
+                                    />
+                                </div>
+                            </div>
+                        </a>
+                    ))}
                 </div>
             </div>
 
