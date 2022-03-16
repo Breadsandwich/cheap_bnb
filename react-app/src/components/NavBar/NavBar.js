@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import LoginFormModal from '../LoginForm/LoginFormModal';
+import SignupFormModal from '../SignupForm/SignupFormModal';
 import './NavBar.css';
 
 
@@ -10,14 +12,14 @@ const NavBar = () => {
 
 
   let sessionLinks;
-  let hostSpot;
+  // let hostSpot;
   if (sessionUser) {
     sessionLinks = <LogoutButton />;
-    hostSpot = (
-        <>
-            <button>host</button>
-        </>
-    )
+    // hostSpot = (
+    //     <>
+    //         <button>host</button>
+    //     </>
+    // )
     // publishAndSearch = (
     //   <>
     //     <SearchBar />
@@ -27,15 +29,11 @@ const NavBar = () => {
   } else {
     sessionLinks = (
       <div className='login-signup-links'>
-        <NavLink to='/login' exact={true} activeClassName='active'>
-          Login
-        </NavLink>
-        <NavLink to='/sign-up' exact={true} activeClassName='active'>
-          Sign Up
-        </NavLink>
+        <LoginFormModal to='/login' exact={true}/>
+        <SignupFormModal to='/signup' exact={true}/>
       </div>
     )
-    hostSpot = null;
+    // hostSpot = null;
     // publishAndSearch = null;
   }
   return (
@@ -46,6 +44,7 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
+
         <li className='session-links'>
           {sessionLinks}
         </li>
