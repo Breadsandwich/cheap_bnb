@@ -13,9 +13,8 @@ class Booking(db.Model):
   created_at = db.Column(db.DateTime(), nullable=False, default=datetime.now())
   updated_at = db.Column(db.DateTime(), nullable=True, default=datetime.now())
 
-  # # one to many with spots
+  # relationships
   users = db.relationship("User", back_populates="bookings")
-
   spots = db.relationship("Spot", back_populates="bookings")
 
   def to_dict(self):

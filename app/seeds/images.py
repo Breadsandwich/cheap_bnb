@@ -25,11 +25,11 @@ def seed_images():
 
 
 
-# Uses a raw SQL query to TRUNCATE the cheatsheets table.
+# Uses a raw SQL query to TRUNCATE the spots table.
 # SQLAlchemy doesn't have a built in function to do this
 # TRUNCATE Removes all the data from the table, and RESET IDENTITY
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_images():
-    db.session.execute('TRUNCATE cheatsheets RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE images RESTART IDENTITY CASCADE;')
     db.session.commit()

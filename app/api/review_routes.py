@@ -20,7 +20,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 # -- create reviews --
 @review_routes.route('/new', methods=['POST'])
-@login_required
+# @login_required
 def create_review():
     data = request.json
     form = ReviewForm()
@@ -39,7 +39,8 @@ def create_review():
         db.session.add(new_review)
         db.session.commit()
 
-        return data
+        return { 'review': data }
+        # return data
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -65,14 +66,17 @@ def update_review(id):
 
       db.session.commit()
 
-      return { 'review': update_review.to_dict() }
+      # return { 'review': update_review.to_dict() }
+      # return data
+      return { 'review': data }
+
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 # -- delete reviews --
 @review_routes.route("/<int:reviewId>", methods=['DELETE'])
-@login_required
+# @login_required
 def delete_review(reviewId):
   review = Review.query.get(reviewId)
   db.session.delete(review)
