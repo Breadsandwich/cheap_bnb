@@ -1,8 +1,21 @@
 import React from "react"
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getAllSpots } from "../../store/spots";
 import './Spots.css'
 
 
 const Spots = () => {
+    const dispatch = useDispatch();
+    const spotsObj = useSelector(state => state?.spotReducer);
+    const spots = spotsObj && Object.values(spotsObj)
+    console.log('spots?? @@@@@@@@@@@@', spotsObj)
+
+
+    useEffect(() => {
+        dispatch(getAllSpots());
+    }, [dispatch])
+
     return (
         <div className="spots_body_container">
             <div className="left_container">
