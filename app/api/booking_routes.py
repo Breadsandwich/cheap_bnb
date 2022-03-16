@@ -80,7 +80,7 @@ def update_booking():
 # -- delete bookings --
 
 @booking_routes.route("/<int:bookingId>", methods=['DELETE'])
-@login_required
+# @login_required
 def delete_booking(bookingId):
   booking = Booking.query.get(bookingId)
   db.session.delete(booking)
