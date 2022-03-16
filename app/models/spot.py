@@ -21,8 +21,8 @@ class Spot(db.Model):
 
     users = db.relationship('User', back_populates='spots')
     images = db.relationship('Image', back_populates='spots', cascade="all, delete")
-    # bookings = db.relationship('Booking', back_populates='spots', cascade="all, delete")
-    # reviews = db.relationship('Review', back_populates='spots', cascade="all, delete")
+    reviews = db.relationship('Review', back_populates='spots', cascade="all, delete")
+    bookings = db.relationship('Booking', back_populates='spots', cascade="all, delete")
 
     def to_dict(self):
         return {
