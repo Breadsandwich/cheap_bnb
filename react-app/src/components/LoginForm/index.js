@@ -9,6 +9,14 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const demoUser = { email: 'demo@aa.io', password: 'password' };
+
+  const handleDemo = (demo) => {
+    const { email, password } = demo
+    dispatch(login(email, password));
+    
+  }
+
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -57,9 +65,10 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type='submit'>Login</button>
+        <button className='login-demo-button' onClick={() => handleDemo(demoUser)}>Demo</button>
       </div>
     </form>
   );
 };
 
-// export default LoginForm;
+export default LoginForm;
