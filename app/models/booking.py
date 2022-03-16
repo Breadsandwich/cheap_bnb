@@ -1,7 +1,7 @@
 from app.models.db import db
 from datetime import datetime
 
-class Step(db.Model):
+class Booking(db.Model):
   __tablename__ = "bookings"
 
   id = db.Column(db.Integer, primary_key=True)

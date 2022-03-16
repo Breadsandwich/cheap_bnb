@@ -66,7 +66,7 @@ def upload_images(spotId):
     if "url" not in upload:
       return upload, 400
     url = upload["url"]
-    new_image = Image(spot_id=id, url=url)
+    new_image = Image(spot_id=spotId, url=url)
 
     db.session.add(new_image)
     db.session.commit()
