@@ -86,25 +86,25 @@ const spotReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case CREATE:
-            newState = state;
+            newState = {...state};
             newState[action.spot.id] = action.spot;
             return newState;
         case GET_ALL:
             newState = {};
             action.spots['all_spots'].forEach(spot => newState[spot.id] = spot);
-            console.log('from spotReducer GET_ALL: #########', newState)
             return newState
 
-        case GET_ONE:
-            newState = state;
-            newState[action.spot.id] = action.spot;
+            case GET_ONE:
+                newState = {...state};
+                newState[action.spot.id] = action.spot;
+                console.log('from spotReducer GET_ALL: #########', newState)
             return newState;
         case UPDATE:
-            newState = state;
+            newState = {...state};
             newState[action.spot.id] = action.spot;
             return newState;
         case DELETE:
-            newState = state;
+            newState = {...state};
             delete newState[action.spotId.id];
             return newState
         default:
