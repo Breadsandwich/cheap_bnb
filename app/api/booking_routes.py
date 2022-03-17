@@ -31,7 +31,7 @@ def create_booking():
       user_id = form.data['user_id'],
       spot_id = form.data['spot_id'],
       start_date = form.data['start_date'],
-      # end_date = form.data['end_date'],
+      end_date = form.data['end_date'],
       guests = form.data['guests'],
       created_at = datetime.now(),
       updated_at = datetime.now()
@@ -87,3 +87,9 @@ def delete_booking(bookingId):
   db.session.commit()
 
   return {'bookingId': bookingId}
+
+
+
+
+## toUTCString() for javascript
+# datetime.strptime() for python

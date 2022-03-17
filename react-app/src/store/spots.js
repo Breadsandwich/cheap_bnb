@@ -14,7 +14,8 @@ const destroy = spotId => ({ type: DELETE, spotId });
 export const createSpot = (spot) => async (dispatch) => {
     const response = await fetch(`/api/spots/new`, {
         method: 'POST',
-        body: spot
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(spot)
     });
 
     if (response.ok) {
@@ -86,8 +87,9 @@ const spotReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case CREATE:
-            newState = {...state};
+            newState = state;
             newState[action.spot.id] = action.spot;
+            console.log('from spotReducer GET_ALL: #########', newState)
             return newState;
         case GET_ALL:
             newState = {};
@@ -97,7 +99,6 @@ const spotReducer = (state = {}, action) => {
             case GET_ONE:
                 newState = {...state};
                 newState[action.spot.id] = action.spot;
-                console.log('from spotReducer GET_ALL: #########', newState)
             return newState;
         case UPDATE:
             newState = {...state};

@@ -1,3 +1,21 @@
 
 
+.hosting_body_container {
+    width: 100%;
+    height: 100vh;
+    margin-top: 12px;
+    display: grid;
+    position: relative;
+    grid-template-areas: 'a b';
+}
 
+.left_side {
+    background-color: aqua;
+    grid-area: a;
+}
+
+.right_side {
+    position: static;
+    background-color: coral;
+    grid-area: b;
+}

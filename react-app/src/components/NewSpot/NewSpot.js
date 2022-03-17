@@ -1,5 +1,6 @@
 import React from "react"
 import SpotForm from "./NewSpotForm"
+import './NewSpot.css'
 
 const NewSpot = () => {
     return (
