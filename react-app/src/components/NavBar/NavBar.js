@@ -15,17 +15,7 @@ const NavBar = () => {
   // let hostSpot;
   if (sessionUser) {
     sessionLinks = <LogoutButton />;
-    // hostSpot = (
-    //     <>
-    //         <button>host</button>
-    //     </>
-    // )
-    // publishAndSearch = (
-    //   <>
-    //     <SearchBar />
-
-    //   </>
-    // )
+ 
   } else {
     sessionLinks = (
       <div className='login-signup-links'>

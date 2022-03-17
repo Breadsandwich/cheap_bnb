@@ -82,7 +82,12 @@ def get_all_spots():
   all_spots = Spot.query.all()
 
   return {"all_spots": [spot.to_dict() for spot in all_spots]}
+  # return {'all_spots': all_spots.to_dict()}
 
+  # return {'all_spots': spots}
+
+
+#-----------------------------
 @spot_routes.route("/<int:spotId>", methods=["GET"])
 def get_one_spot(spotId):
   one_spot = Spot.query.get(spotId)
