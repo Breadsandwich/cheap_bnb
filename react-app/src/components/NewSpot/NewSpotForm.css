@@ -1,0 +1,11 @@
+.form_div {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.spot_form {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}

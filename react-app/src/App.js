@@ -11,6 +11,8 @@ import Homepage from './components/Homepage/Homepage';
 import NavBar from './components/NavBar/NavBar';
 import Spots from './components/Spots/Spots';
 import SpotPage from './components/SpotPage/SpotPage';
+import NewSpot from './components/NewSpot/NewSpot';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,8 +42,16 @@ function App() {
           <Spots />
         </Route>
 
-        <Route path='/spots/:spotId'>
+        <Route path='/spots/hosting' exact={true}>
+          <NewSpot />
+        </Route>
+
+        <Route path='/spots/:spotId' exact={true}>
           <SpotPage />
+        </Route>
+
+        <Route path={'/'}>
+          <PageNotFound path='/' />
         </Route>
 
       </Switch>
