@@ -1,6 +1,7 @@
-
+import states from '../../components/utils/statesArr'
 
 const SpotForm = () => {
+
     return (
         <div className="form_div">
             <form className="spot_form">
@@ -22,7 +23,10 @@ const SpotForm = () => {
 
 
                 <div>
-                    <input type="text" placeholder="state"/>
+                    <select name="state" >
+                        {states.map((state) => <option value={state}>{state}</option>)}
+                    </select>
+
                 </div>
 
 
