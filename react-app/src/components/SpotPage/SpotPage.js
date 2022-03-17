@@ -18,12 +18,6 @@ const SpotPage = () => {
 
     return (
         <div>
-            <h1>spot page</h1>
-            <h1>{spot?.spot_name}</h1>
-            <h2>Hosted by: {spot?.host}</h2>
-            <h3>{spot?.address}, {spot?.city}, {spot?.state}</h3>
-            <p>Description of spot: {spot?.description}</p>
-            <h4>book for: ${spot?.price}/day</h4>
             <div className="images_container">
             {spot?.images?.map((image) => (
                 <div>
@@ -31,6 +25,12 @@ const SpotPage = () => {
                 </div>
             ))}
             </div>
+            <h1>spot page</h1>
+            <h1>{spot?.spot_name}</h1>
+            <h2>Hosted by: {spot?.host}</h2>
+            <h3>{spot?.address}, {spot?.city}, {spot?.state}</h3>
+            <p>Description of spot: {spot?.description}</p>
+            <h4>book for: ${spot?.price}/day</h4>
         </div>
     )
 }
