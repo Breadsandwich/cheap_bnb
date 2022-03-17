@@ -1,8 +1,8 @@
 import React from "react"
-import SpotForm from "./NewSpotForm"
 import './NewSpot.css'
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
+import SpotForm from "./Spot_form"
 
 const NewSpot = () => {
     const dispatch = useDispatch();
