@@ -10,8 +10,8 @@ import { authenticate } from './store/session';
 import Homepage from './components/Homepage/Homepage';
 import NavBar from './components/NavBar/NavBar';
 import Spots from './components/Spots/Spots';
-import SpotPage from './components/SpotPage/SpotPage';
-import NewSpot from './components/NewSpot/NewSpot';
+import SpotPage from './components/Spots/SpotPage/SpotPage';
+import NewSpot from './components/Spots/NewSpot/NewSpot';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {

@@ -2,9 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import { useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createSpot } from '../../store/spots';
+import { createSpot } from '../../../store/spots';
 
-import states from '../../components/utils/statesArr'
+import states from '../../utils/statesArr'
 
 export const FormInput = ({ name, state, setState }) => {
     const formatName = name.toLowerCase().split(' ').join('-');
@@ -76,6 +76,7 @@ const SpotForm = () => {
         return 'Failed to create spot'
     }
 
+
     return (
         <div className="form_div">
             <form className="spot_form" onSubmit={handleSubmit}>
@@ -114,12 +115,10 @@ const SpotForm = () => {
                 </div>
             </form>
 
-            <div className='errors'>
-                {errors?.length > 0 && errors?.filter(error => error !== 'Invalid value')
-                .map((error, id) => (
-                    <div key={id}>{error}</div>
-                    ))
-                }
+            <div>
+                {errors.map((error, ind) => (
+                <div className='errors' key={ind}>{error}</div>
+                ))}
             </div>
         </div>
     )

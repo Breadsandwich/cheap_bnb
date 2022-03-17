@@ -2,9 +2,8 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-
-import { getOneSpot } from "../../store/spots";
-
+import { getOneSpot } from "../../../store/spots";
+// import EditSpotModal from "./EditSpotModal";
 const SpotPage = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
@@ -13,7 +12,7 @@ const SpotPage = () => {
 
     useEffect(() => { dispatch(getOneSpot(spotId)) }, [ dispatch, spotId ])
     const spot = useSelector(state => state?.spotReducer[spotId])
-    console.log('spot object from spotpage: ',spot)
+    // console.log('spot object from spotpage: ',spot)
 
 
     return (
@@ -25,12 +24,17 @@ const SpotPage = () => {
                 </div>
             ))}
             </div>
-            <h1>spot page</h1>
-            <h1>{spot?.spot_name}</h1>
-            <h2>Hosted by: {spot?.host}</h2>
-            <h3>{spot?.address}, {spot?.city}, {spot?.state}</h3>
-            <p>Description of spot: {spot?.description}</p>
-            <h4>book for: ${spot?.price}/day</h4>
+            <div>
+                <h1>spot page</h1>
+                <h1>{spot?.spot_name}</h1>
+                <h2>Hosted by: {spot?.host}</h2>
+                <h3>{spot?.address}, {spot?.city}, {spot?.state}</h3>
+                <p>Description of spot: {spot?.description}</p>
+                <h4>book for: ${spot?.price}/day</h4>
+            </div>
+            <div className="owner_btns">
+                {/* <EditSpotModal spot={spot} /> */}
+            </div>
         </div>
     )
 }

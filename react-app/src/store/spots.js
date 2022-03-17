@@ -18,7 +18,6 @@ export const createSpot = (spot) => async (dispatch) => {
         // body: JSON.stringify(spot)
         body: spot
     });
-    // console.log('response from create spot thunk:', response)
 
     if (response.ok) {
         const data = await response.json();
@@ -60,8 +59,11 @@ export const getOneSpot = (spotId) => async (dispatch) => {
 export const updateSpot = (spot, spotId) => async (dispatch) => {
     const response = await fetch(`/api/spots/${spotId}`, {
         method: 'PUT',
+        // headers: { 'Content-Type': 'application/json' },
         body: spot
     });
+    console.log('response from update spot thunk:', response)
+
 
     if (response.ok) {
         const data = await response.json();
@@ -99,15 +101,15 @@ const spotReducer = (state = {}, action) => {
             return newState
 
             case GET_ONE:
-                newState = {...state};
+                newState = state;
                 newState[action.spot.id] = action.spot;
             return newState;
         case UPDATE:
-            newState = {...state};
+            newState = state;
             newState[action.spot.id] = action.spot;
             return newState;
         case DELETE:
-            newState = {...state};
+            newState = state;
             delete newState[action.spotId.id];
             return newState
         default:
