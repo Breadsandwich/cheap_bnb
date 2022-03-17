@@ -14,9 +14,11 @@ const destroy = spotId => ({ type: DELETE, spotId });
 export const createSpot = (spot) => async (dispatch) => {
     const response = await fetch(`/api/spots/new`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(spot)
+        // headers: { 'Content-Type': 'application/json' },
+        // body: JSON.stringify(spot)
+        body: spot
     });
+    // console.log('response from create spot thunk:', response)
 
     if (response.ok) {
         const data = await response.json();

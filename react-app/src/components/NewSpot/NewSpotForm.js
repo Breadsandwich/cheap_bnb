@@ -60,20 +60,16 @@ const SpotForm = () => {
         formData.append('price', price);
         formData.append('guest_limit', guest_limit);
 
-        // const payload = {
-        //     spot_name,
-        //     description,
-        //     address,
-        //     city,
-        //     state,
-        //     price,
-        //     guest_limit,
 
-        // };
 
-        const newSpot = await dispatch(createSpot(formData));
+        const newSpot = await dispatch(createSpot(formData)).catch(
+            (async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors)
+            })
+        )
 
-        if (newSpot?.errors) setErrors(newSpot?.errors)
+        // if (newSpot?.errors) setErrors(newSpot?.errors)
         if (newSpot?.id) {
             return history.push(`/spots/${newSpot?.id}`)
         }
@@ -84,7 +80,7 @@ const SpotForm = () => {
         <div className="form_div">
             <form className="spot_form" onSubmit={handleSubmit}>
                 <FormInput name='Spot name' state={spot_name}  setState={setSpot_name} isRequired={true} />
-                <FormTextarea name='description' state={description} setState={setDescription}  />
+                <FormTextarea name='description' state={description} setState={setDescription} isRequired={true} />
                 <FormInput name='address' state={address} setState={setAddress} isRequired={true}/>
                 <FormInput name='city' state={city} setState={setCity} isRequired={true} />
 
@@ -122,7 +118,7 @@ const SpotForm = () => {
                 {errors?.length > 0 && errors?.filter(error => error !== 'Invalid value')
                 .map((error, id) => (
                     <div key={id}>{error}</div>
-                ))
+                    ))
                 }
             </div>
         </div>

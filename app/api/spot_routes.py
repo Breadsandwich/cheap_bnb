@@ -37,8 +37,8 @@ def create_spot():
       state = form.data['state'],
       price = form.data['price'],
       guest_limit = form.data['guest_limit'],
-      # created_at = datetime.now(),
-      # updated_at = datetime.now()
+      created_at = datetime.now(),
+      updated_at = datetime.now()
     )
 
     db.session.add(new_spot)
