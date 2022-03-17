@@ -50,7 +50,7 @@ function App() {
           <SpotPage />
         </Route>
 
-        <Route>
+        <Route path={'/'}>
           <PageNotFound path='/' />
         </Route>
 
