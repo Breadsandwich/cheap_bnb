@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import Footer from "../Footer/Footer";
@@ -15,7 +16,7 @@ const Homepage = () => {
                 <div className="big_card">
                     <div className="big_card_elements">
                         <h2>Let your curiosity do the booking</h2>
-                        <button>I'm flexible</button>
+                        <NavLink className={'navlink_btns'} to={'/spots'} exact={true}>I'm Flexable</NavLink>
                     </div>
                 </div>
             </div>

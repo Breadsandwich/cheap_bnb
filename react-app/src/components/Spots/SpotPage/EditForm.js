@@ -30,7 +30,7 @@ export const FormTextarea = ({ name, state, setState }) => {
 
 
 
-const SpotForm = ({ name, edit, spot, closeModal}) => {
+const EditSpotForm = ({ name, edit, spot, closeModal}) => {
     const dispatch = useDispatch();
     const history = useHistory()
 
@@ -38,13 +38,13 @@ const SpotForm = ({ name, edit, spot, closeModal}) => {
 
 
     const [errors, setErrors] = useState([]);
-    const [spot_name, setSpot_name] = useState('');
-    const [description, setDescription] = useState('');
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('AL');
-    const [price, setPrice] = useState('');
-    const [guest_limit, setGuest_limit] = useState('');
+    const [spot_name, setSpot_name] = useState(spot?.spot_name );
+    const [description, setDescription] = useState(spot?.description);
+    const [address, setAddress] = useState(spot?.address );
+    const [city, setCity] = useState(spot?.city );
+    const [state, setState] = useState(spot?.state );
+    const [price, setPrice] = useState(spot?.price );
+    const [guest_limit, setGuest_limit] = useState(spot?.guest_limit);
     // const [image, setImage] = useState('')
 
     const handleSubmit = async (e) => {
@@ -119,7 +119,7 @@ const SpotForm = ({ name, edit, spot, closeModal}) => {
                 </div> */}
 
                 <div>
-                    <button className='spot_btn' type='submit'>Host Spot</button>
+                    <button className='spot_btn' type='submit'>submit</button>
                 </div>
             </form>
 
@@ -128,4 +128,4 @@ const SpotForm = ({ name, edit, spot, closeModal}) => {
     )
 }
 
-export default SpotForm
+export default EditSpotForm

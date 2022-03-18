@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 // import match from '../../components/utils'
 import SpotForm from '../SpotForm/Spot_form';
+import EditSpotForm from './EditForm';
 
 
 
@@ -21,7 +22,7 @@ function SpotFormModal({ name='Host', edit=false, spot=null }) {
                 <button className='edit-spot-modal' onClick={e => setShowModal(true)}>{name}</button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <SpotForm name={edit} edit={edit} spot={spot} closeModal={() => setShowModal(false)} />
+                        <EditSpotForm name={edit} edit={edit} spot={spot} closeModal={() => setShowModal(false)} />
                     </Modal>
                 )}
             </div>
