@@ -30,7 +30,7 @@ export const FormTextarea = ({ name, state, setState }) => {
 
 
 
-const SpotForm = ({ edit, spot, closeModal}) => {
+const SpotForm = ({ name, edit, spot, closeModal}) => {
     const dispatch = useDispatch();
     const history = useHistory()
 
@@ -73,8 +73,8 @@ const SpotForm = ({ edit, spot, closeModal}) => {
         const newSpot = await dispatch(createSpot(formData))
         if (newSpot?.errors) setErrors(newSpot?.errors)
         if (newSpot?.id) {
-            history.push(`/spots/${newSpot?.id}`);
-            return closeModal();
+            return history.push(`/spots/${newSpot?.id}`);
+
         }
         return 'failed to create new spot'
     }
@@ -119,7 +119,7 @@ const SpotForm = ({ edit, spot, closeModal}) => {
                 </div> */}
 
                 <div>
-                    <button className='new_spot_btn' type='submit'>edit</button>
+                    <button className='new_spot_btn' type='submit'>{name}</button>
                 </div>
             </form>
 

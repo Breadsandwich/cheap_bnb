@@ -6,7 +6,7 @@ import SpotForm from '../SpotForm/Spot_form';
 
 
 
-function SpotFormModal({ edit=true, spot }) {
+function SpotFormModal({ name='Host', edit=false, spot=null }) {
     const [ showModal, setShowModal ] = useState(false);
 
     // const sessionId = useSelector(state => state?.session?.user?.id)
@@ -18,7 +18,7 @@ function SpotFormModal({ edit=true, spot }) {
     return (
         // matchingToSessionUser &&(
             <div className='edit-spot-modal-button-container'>
-                <button className='edit-spot-modal' onClick={e => setShowModal(true)}>Edit</button>
+                <button className='edit-spot-modal' onClick={e => setShowModal(true)}>{name}</button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                         <SpotForm name={edit} edit={edit} spot={spot} closeModal={() => setShowModal(false)} />

@@ -36,7 +36,7 @@ const SpotPage = () => {
                 <h4>book for: ${spot?.price}/day</h4>
             </div>
             <div className="owner_btns">
-                <SpotFormModal spot={spot} />
+                <SpotFormModal name='Edit Spot' edit={true} spot={spot}/>
                 <SpotDeleteButton spotId={spot?.id} />
             </div>
         </div>
