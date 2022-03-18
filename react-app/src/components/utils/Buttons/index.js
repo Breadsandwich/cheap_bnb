@@ -1,7 +1,8 @@
 import { useHistory } from 'react-router-dom';
-import { deleteSpot } from "../../store/spots";
+// import { deleteSpot } from "../../store/spots";
+import { deleteSpot } from '../../../store/spots';
 import { useDispatch } from "react-redux";
-import './Buttons.css'
+
 
 export const DeleteButton = ({ thisId, deleteThunk, config }) => {
   const dispatch = useDispatch()
@@ -21,5 +22,5 @@ export const DeleteButton = ({ thisId, deleteThunk, config }) => {
 
 
 export const SpotDeleteButton = ({ spotId }) => (
-  <DeleteButton thisId={spotId} deleteThunk={deleteSpot} config={{  buttonName: 'Delete Spot', newRoute: '/' }} />
+  <DeleteButton thisId={spotId} deleteThunk={deleteSpot} config={{  buttonName: 'Delete Spot', newRoute: '/spots' }} />
 )

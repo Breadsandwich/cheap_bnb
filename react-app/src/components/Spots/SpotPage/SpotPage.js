@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getOneSpot } from "../../../store/spots";
-// import EditSpotModal from "./EditSpotModal";
+import SpotFormModal from "./SpotModal";
+import { SpotDeleteButton } from "../../utils/Buttons";
+
+
 const SpotPage = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
@@ -33,7 +36,8 @@ const SpotPage = () => {
                 <h4>book for: ${spot?.price}/day</h4>
             </div>
             <div className="owner_btns">
-                {/* <EditSpotModal spot={spot} /> */}
+                <SpotFormModal name='Edit Spot' edit={true} spot={spot}/>
+                <SpotDeleteButton spotId={spot?.id} />
             </div>
         </div>
     )

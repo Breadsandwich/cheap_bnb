@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createSpot } from '../../../store/spots';
+import { createSpot, updateSpot } from '../../../store/spots';
 
 import states from '../../utils/statesArr'
 
@@ -30,14 +30,14 @@ export const FormTextarea = ({ name, state, setState }) => {
 
 
 
-const SpotForm = () => {
+const SpotForm = ({ name, edit, spot, closeModal}) => {
     const dispatch = useDispatch();
     const history = useHistory()
-    const [errors, setErrors] = useState([]);
 
     const user_id = useSelector(state => state?.session?.user?.id)
 
 
+    const [errors, setErrors] = useState([]);
     const [spot_name, setSpot_name] = useState('');
     const [description, setDescription] = useState('');
     const [address, setAddress] = useState('');
@@ -60,30 +60,38 @@ const SpotForm = () => {
         formData.append('price', price);
         formData.append('guest_limit', guest_limit);
 
-
-
-        const newSpot = await dispatch(createSpot(formData)).catch(
-            (async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors)
-            })
-        )
-
-        // if (newSpot?.errors) setErrors(newSpot?.errors)
-        if (newSpot?.id) {
-            return history.push(`/spots/${newSpot?.id}`)
+        if (edit) {
+            const updatedSpot = await dispatch(updateSpot(formData, spot?.id))
+            if (updatedSpot?.errors) setErrors(updatedSpot?.errors);
+            if (updatedSpot?.id) {
+                history.push(`/spots/${spot?.id}`)
+                return closeModal();
+            }
+            return 'update Failed'
         }
-        return 'Failed to create spot'
+
+        const newSpot = await dispatch(createSpot(formData))
+        if (newSpot?.errors) setErrors(newSpot?.errors)
+        if (newSpot?.id) {
+            return history.push(`/spots/${newSpot?.id}`);
+
+        }
+        return 'failed to create new spot'
     }
 
 
     return (
         <div className="form_div">
+            <div>
+                {errors.map((error, ind) => (
+                <div className='errors' key={ind}>{error}</div>
+                ))}
+            </div>
             <form className="spot_form" onSubmit={handleSubmit}>
-                <FormInput name='Spot name' state={spot_name}  setState={setSpot_name} isRequired={true} />
-                <FormTextarea name='description' state={description} setState={setDescription} isRequired={true} />
-                <FormInput name='address' state={address} setState={setAddress} isRequired={true}/>
-                <FormInput name='city' state={city} setState={setCity} isRequired={true} />
+                <FormInput name='Spot name' state={spot_name}  setState={setSpot_name} />
+                <FormTextarea name='description' state={description} setState={setDescription} />
+                <FormInput name='address' state={address} setState={setAddress}/>
+                <FormInput name='city' state={city} setState={setCity} />
 
                 <div>
                     <label htmlFor="state">state</label>
@@ -111,15 +119,11 @@ const SpotForm = () => {
                 </div> */}
 
                 <div>
-                    <button className='new_spot_btn' type='submit'>submit</button>
+                    <button className='spot_btn' type='submit'>Host Spot</button>
                 </div>
             </form>
 
-            <div>
-                {errors.map((error, ind) => (
-                <div className='errors' key={ind}>{error}</div>
-                ))}
-            </div>
+
         </div>
     )
 }

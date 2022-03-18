@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import LoginFormModal from '../LoginForm/LoginFormModal';
 import SignupFormModal from '../SignupForm/SignupFormModal';
+
 import './NavBar.css';
 
 
@@ -12,10 +13,15 @@ const NavBar = () => {
 
 
   let sessionLinks;
-  // let hostSpot;
+  let hostSpot;
   if (sessionUser) {
     sessionLinks = <LogoutButton />;
- 
+    hostSpot = (
+      <>
+        <NavLink className={'navlink_btns'} to='/spots/hosting' exact={true}>Host a Spot</NavLink>
+      </>
+    )
+
   } else {
     sessionLinks = (
       <div className='login-signup-links'>
@@ -23,7 +29,7 @@ const NavBar = () => {
         <SignupFormModal to='/signup' exact={true}/>
       </div>
     )
-    // hostSpot = null;
+    hostSpot = null;
     // publishAndSearch = null;
   }
   return (
@@ -36,6 +42,7 @@ const NavBar = () => {
         </li>
 
         <li className='session-links'>
+          {hostSpot}
           {sessionLinks}
         </li>
       </ul>
