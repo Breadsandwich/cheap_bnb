@@ -45,7 +45,7 @@ const SpotForm = ({ name, edit, spot, closeModal}) => {
     const [state, setState] = useState('AL');
     const [price, setPrice] = useState('');
     const [guest_limit, setGuest_limit] = useState('');
-    // const [image, setImage] = useState('')
+    const [image_url, setImage_url] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -59,6 +59,7 @@ const SpotForm = ({ name, edit, spot, closeModal}) => {
         formData.append('state', state);
         formData.append('price', price);
         formData.append('guest_limit', guest_limit);
+        formData.append('image_url', image_url);
 
         if (edit) {
             const updatedSpot = await dispatch(updateSpot(formData, spot?.id))
@@ -77,6 +78,11 @@ const SpotForm = ({ name, edit, spot, closeModal}) => {
 
         }
         return 'failed to create new spot'
+    }
+
+    const updateImage_url = (e) => {
+        const file = e.target.files[ 0 ];
+        setImage_url(file);
     }
 
 
@@ -110,13 +116,12 @@ const SpotForm = ({ name, edit, spot, closeModal}) => {
                     <input type="number" value={guest_limit} onChange={e => setGuest_limit(e.target.value)} />
                 </div>
 
-                {/* <FormInput name='image' state={image} setState={setImage} isRequired={false} /> */}
+                <div>
+                    <input name='image_url' id='image_url_input' type="file" accept="image/*" onChange={updateImage_url} />
+                </div>
 
 
 
-                {/* <div>
-                    <input type="file" name='image_upload' id='image_upload_input' accept='image/*'  />
-                </div> */}
 
                 <div>
                     <button className='spot_btn' type='submit'>Host Spot</button>

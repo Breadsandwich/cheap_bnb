@@ -21,11 +21,10 @@ const SpotPage = () => {
     return (
         <div>
             <div className="images_container">
-            {spot?.images?.map((image) => (
                 <div>
-                    <img src={image} alt="spot_image" />
+                    <img src={spot?.image_url} alt="spot_image" />
                 </div>
-            ))}
+
             </div>
             <div>
                 <h1>spot page</h1>
