@@ -33,7 +33,7 @@ const ReviewsComponent = ({ spot }) => {
         // formData.append('rating', parseInt(rating))
 
         const payload = {
-            owner: sessionUser.id,
+            user_id: sessionUser.id,
             spot_id: spotId,
             review,
             rating
