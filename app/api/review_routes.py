@@ -68,8 +68,8 @@ def update_review(id):
       db.session.commit()
 
       # return {}
-      return { 'updated_review': update_review.to_dict() }
-      # return updated_review.to_dict()
+      # return { 'updated_review': update_review.to_dict() }
+      return updated_review.to_dict()
       # return { 'review': data }
 
 

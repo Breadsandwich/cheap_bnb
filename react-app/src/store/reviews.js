@@ -45,7 +45,7 @@ export const updateReview = (payload) => async (dispatch) => {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body:JSON.stringify(payload)
-        // body: review
+        // body: payload
     });
     console.log('response from update review thunk:', response)
 
@@ -87,7 +87,7 @@ const reviewReducer = (state = {}, action) => {
         case UPDATE:
             newState = state;
             newState[action.review.id] = action.review;
-            console.log('from update reducer:', newState)
+            // console.log('from update reducer:', newState)
             return newState;
         case DELETE:
             newState = state;
