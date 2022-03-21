@@ -65,9 +65,10 @@ def update_review(id):
 
       db.session.commit()
 
-      # return { 'review': update_review.to_dict() }
-      # return data
-      return { 'review': data }
+      # return {}
+      # return { 'updated_review': update_review.to_dict() }
+      return updated_review.to_dict()
+      # return { 'review': data }
 
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
