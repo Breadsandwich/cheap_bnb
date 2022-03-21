@@ -40,13 +40,14 @@ export const getReviews = (id) => async (dispatch) => {
 };
 
 
-export const updateReview = (review, reviewId) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${reviewId}`, {
+export const updateReview = (payload) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${payload.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body:JSON.stringify(review)
+        body:JSON.stringify(payload)
+        // body: review
     });
-    // console.log('response from update review thunk:', response)
+    console.log('response from update review thunk:', response)
 
 
     if (response.ok) {
@@ -78,7 +79,6 @@ const reviewReducer = (state = {}, action) => {
         case CREATE:
             newState = state;
             newState[action.review.id] = action.review;
-            console.log('from reviewReducer GET_ALL: #########', newState)
             return newState;
         case GET_ALL:
             newState = {};
@@ -87,6 +87,7 @@ const reviewReducer = (state = {}, action) => {
         case UPDATE:
             newState = state;
             newState[action.review.id] = action.review;
+            console.log('from update reducer:', newState)
             return newState;
         case DELETE:
             newState = state;

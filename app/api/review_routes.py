@@ -60,14 +60,16 @@ def update_review(id):
 
     if form.validate_on_submit():
       updated_review = Review.query.get(id)
+      # updated_review.user_id = data['user_id']
+      # updated_review.spot_id = data['spot_id']
       updated_review.rating = data['rating']
       updated_review.review = data['review']
 
       db.session.commit()
 
       # return {}
-      # return { 'updated_review': update_review.to_dict() }
-      return updated_review.to_dict()
+      return { 'updated_review': update_review.to_dict() }
+      # return updated_review.to_dict()
       # return { 'review': data }
 
 

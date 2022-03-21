@@ -20,7 +20,7 @@ const EditReviewForm = ({singleReview, closeModal}) => {
         e.preventDefault();
 
         const payload = {
-            user_id: sessionUser.id,
+            id,
             spot_id: spotId,
             review,
             rating
