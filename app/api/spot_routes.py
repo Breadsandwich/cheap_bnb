@@ -1,9 +1,8 @@
-from crypt import methods
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 import psycopg2
 from app.forms.spot_form import SpotForm
-from app.models import Spot, User, db, Image
+from app.models import Spot, User, db
 from datetime import datetime
 from app.s3_helpers import (upload_file_to_s3, allowed_file, get_unique_filename)
 
@@ -20,12 +19,25 @@ def validation_errors_to_error_messages(validation_errors):
 
 # CRUD routes
 
-# -- create spots --
+#--- test create with photo upload ---
 @spot_routes.route('/new', methods=['POST'])
 # @login_required
 def create_spot():
   form = SpotForm()
   form['csrf_token'].data = request.cookies['csrf_token']
+
+  url = 'no data provided'
+  if type(form.data['image_url']) is not str:
+    image = form.data['image_url']
+
+    if not allowed_file(image.filename):
+      return {"errors": "file type not permitted"}, 400
+
+    image.filename = get_unique_filename(image.filename)
+    upload = upload_file_to_s3(image)
+    if "url" not in upload:
+      return upload, 400
+    url = upload["url"]
 
   if form.validate_on_submit():
     new_spot = Spot(
@@ -37,6 +49,7 @@ def create_spot():
       state = form.data['state'],
       price = form.data['price'],
       guest_limit = form.data['guest_limit'],
+      image_url = url,
       created_at = datetime.now(),
       updated_at = datetime.now()
     )
@@ -47,33 +60,6 @@ def create_spot():
 
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-
-@spot_routes.route('/<int:spotId>/photos', methods=['POST'])
-def upload_images(spotId):
-  photo_list = []
-
-  if 'images' not in request.files:
-    return {'errors': 'images required'}, 400
-
-  images = request.files.getlist('images')
-
-  for image in images:
-    if not allowed_file(image.filename):
-      return {'errors': 'file type not permitted'}, 400
-
-    image.filename = get_unique_filename(image.filename)
-    upload = upload_file_to_s3(image)
-    if "url" not in upload:
-      return upload, 400
-    url = upload["url"]
-    new_image = Image(spot_id=spotId, url=url)
-
-    db.session.add(new_image)
-    db.session.commit()
-
-    photo_list.append(url)
-
-  return {'photo_list': photo_list}
 
 
 # -- read spots --

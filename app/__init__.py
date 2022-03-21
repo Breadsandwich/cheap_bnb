@@ -12,6 +12,7 @@ from .api.spot_routes import spot_routes
 from .api.review_routes import review_routes
 from .api.booking_routes import booking_routes
 
+
 from .seeds import seed_commands
 
 from .config import Config

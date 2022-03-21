@@ -9,7 +9,7 @@ const Spots = () => {
     const dispatch = useDispatch();
     const spotsObj = useSelector(state => state?.spotReducer);
     const spots = spotsObj && Object.values(spotsObj)
-    // console.log('spots?? @@@@@@@@@@@@', spotsObj)
+    console.log('spots?? @@@@@@@@@@@@', spotsObj)
     // console.log('spots?? @@@@@@@@@@@@', spots)
 
 
@@ -32,7 +32,7 @@ const Spots = () => {
                                 <div>
                                     <img
                                         className="spot_img"
-                                        src={spot?.images[0]} alt="spot_image"
+                                        src={spot?.image_url} alt="spot_image"
                                         onError={e => e.target.style.display = 'none'}
                                     />
                                 </div>

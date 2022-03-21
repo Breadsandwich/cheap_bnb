@@ -9,7 +9,8 @@ def seed_spots():
         city = 'Phoenix',
         state = 'AZ',
         price = 2,
-        guest_limit = 1
+        guest_limit = 1,
+        image_url = 'http://2.bp.blogspot.com/-pspybnFG5F4/TfGgqcoEWlI/AAAAAAAACbw/NV0o7Tmhl6s/s1600/FF-Cardboard-Fort.jpg'
     )
     spot_2 = Spot(
         user_id = 1,
@@ -19,7 +20,8 @@ def seed_spots():
         city = 'New York',
         state = 'NY',
         price = 39,
-        guest_limit = 2
+        guest_limit = 2,
+        image_url = 'https://a0.muscache.com/im/pictures/miso/Hosting-49946887/original/b179070f-3942-443b-a21b-cb2d01969175.jpeg'
     )
 
     db.session.add(spot_1)

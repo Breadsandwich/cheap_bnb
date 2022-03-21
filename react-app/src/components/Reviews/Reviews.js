@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { createReview, getReviews } from '../../store/reviews';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-
+import ReviewFormModal from './EditReview/ReviewModal';
 import './Reviews.css'
 
 const ReviewsComponent = ({ spot }) => {
@@ -33,7 +33,7 @@ const ReviewsComponent = ({ spot }) => {
         // formData.append('rating', parseInt(rating))
 
         const payload = {
-            owner: sessionUser.id,
+            user_id: sessionUser.id,
             spot_id: spotId,
             review,
             rating
@@ -76,17 +76,17 @@ const ReviewsComponent = ({ spot }) => {
 
 
             <ul className='posted_reviews_container'>
-                {reviews?.map(review => (
-                    <li className='listed_reviews' key={review?.id}>
-                        <h3>Review by: {review?.owner}</h3>
+                {reviews?.map(singleReview => (
+                    <li className='listed_reviews' key={singleReview?.id}>
+                        <h3>Review by: {singleReview?.owner}</h3>
                         <div className='review_box'>
-                            <p>{review?.review}</p>
+                            <p>{singleReview?.review}</p>
                         </div>
-                            rating: {review?.rating}/5
+                            rating: {singleReview?.rating}/5
                         <div>
                         </div>
                         <div className='review_edit_delete_btn'>
-                            <button>edit</button>
+                            <ReviewFormModal singleReview={singleReview} />
                             <button>delete</button>
 
                         </div>
