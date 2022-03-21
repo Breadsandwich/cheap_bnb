@@ -31,16 +31,15 @@ def create_review():
             user_id = data['user_id'],
             spot_id = data['spot_id'],
             review = data['review'],
-            rating = data['rating'],
-            created_at = datetime.now(),
-            updated_at = datetime.now()
+            rating = data['rating']
         )
 
         db.session.add(new_review)
         db.session.commit()
 
+        return {'new_review': new_review.to_dict()}
         # return {**new_review.to_dict()}
-        return data
+        # return data
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -66,9 +65,10 @@ def update_review(id):
 
       db.session.commit()
 
-      # return { 'review': update_review.to_dict() }
-      # return data
-      return { 'review': data }
+      # return {}
+      # return { 'updated_review': update_review.to_dict() }
+      return updated_review.to_dict()
+      # return { 'review': data }
 
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
