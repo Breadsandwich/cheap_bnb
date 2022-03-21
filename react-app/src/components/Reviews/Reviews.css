@@ -1,0 +1,25 @@
+.review_box {
+    border-top: 0.5 solid black ;
+
+}
+
+.reviews_component {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    flex-direction: column;
+}
+
+.create_review_container{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.create_review_form {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}

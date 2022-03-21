@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { getOneSpot } from "../../../store/spots";
 import SpotFormModal from "./SpotModal";
 import { SpotDeleteButton } from "../../utils/Buttons";
+import ReviewsComponent from "../../Reviews/Reviews";
 
 
 const SpotPage = () => {
@@ -38,6 +39,16 @@ const SpotPage = () => {
                 <SpotFormModal name='Edit Spot' edit={true} spot={spot}/>
                 <SpotDeleteButton spotId={spot?.id} />
             </div>
+
+            <hr className="seperator"/>
+
+                <h1>reviews section</h1>
+            <div className="reviews_container">
+                <div>
+                    <ReviewsComponent spot={spot}/>
+                </div>
+            </div>
+
         </div>
     )
 }

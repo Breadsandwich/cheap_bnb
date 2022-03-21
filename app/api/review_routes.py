@@ -39,8 +39,8 @@ def create_review():
         db.session.add(new_review)
         db.session.commit()
 
-        return { 'review': data }
-        # return data
+        # return {**new_review.to_dict()}
+        return data
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
