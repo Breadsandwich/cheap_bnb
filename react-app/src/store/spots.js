@@ -14,17 +14,21 @@ const destroy = spotId => ({ type: DELETE, spotId });
 export const createSpot = (spot) => async (dispatch) => {
     const response = await fetch(`/api/spots/new`, {
         method: 'POST',
-        // headers: { 'Content-Type': 'application/json' },
-        // body: JSON.stringify(spot)
         body: spot
     });
 
     if (response.ok) {
         const data = await response.json();
         dispatch(create(data));
-        return data;
-    };
-    return response;
+        return data
+    } else {
+        const dataError = await response.json()
+        if (dataError.errors) {
+            return {'errors': dataError.errors};
+        } else {
+            return {'errors': 'Something went wrong. Please try again'}
+        }
+    }
 };
 
 //get spots thunk
@@ -62,15 +66,20 @@ export const updateSpot = (spot, spotId) => async (dispatch) => {
         // headers: { 'Content-Type': 'application/json' },
         body: spot
     });
-    console.log('response from update spot thunk:', response)
 
 
     if (response.ok) {
         const data = await response.json();
         dispatch(update(data));
         return data;
-    };
-    return response;
+    } else {
+        const dataError = await response.json()
+        if (dataError.errors) {
+            return {'errors': dataError.errors};
+        } else {
+            return {'errors': 'Something went wrong. Please try again'}
+        }
+    }
 };
 
 //delete spot thunk
@@ -93,17 +102,16 @@ const spotReducer = (state = {}, action) => {
         case CREATE:
             newState = state;
             newState[action.spot.id] = action.spot;
-            console.log('from spotReducer GET_ALL: #########', newState)
             return newState;
         case GET_ALL:
             newState = {};
             action.spots['all_spots'].forEach(spot => newState[spot.id] = spot);
             return newState
 
-            case GET_ONE:
-                newState = state;
-                newState[action.spot.id] = action.spot;
-            return newState;
+        case GET_ONE:
+            newState = {...state};
+            newState[action.spot.id] = action.spot;
+        return newState;
         case UPDATE:
             newState = state;
             newState[action.spot.id] = action.spot;

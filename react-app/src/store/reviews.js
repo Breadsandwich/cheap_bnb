@@ -23,8 +23,14 @@ export const createReview = (review) => async (dispatch) => {
         const data = await response.json();
         dispatch(create(data));
         return data;
-    };
-    return response;
+    } else {
+        const dataError = await response.json()
+        if (dataError.errors) {
+            return {'errors': dataError.errors};
+        } else {
+            return {'errors': 'Something went wrong. Please try again'}
+        }
+    }
 };
 
 
@@ -47,15 +53,20 @@ export const updateReview = (payload) => async (dispatch) => {
         body:JSON.stringify(payload)
         // body: payload
     });
-    console.log('response from update review thunk:', response)
 
 
     if (response.ok) {
         const data = await response.json();
         dispatch(update(data));
         return data;
-    };
-    return response;
+    } else {
+        const dataError = await response.json()
+        if (dataError.errors) {
+            return {'errors': dataError.errors};
+        } else {
+            return {'errors': 'Something went wrong. Please try again'}
+        }
+    }
 };
 
 
@@ -63,6 +74,7 @@ export const deleteReview = (reviewId) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${reviewId}`, {
         method: 'DELETE'
     });
+    console.log('response from delete review thunk:', response)
 
     if (response.ok) {
         const data = await response.json();
@@ -87,10 +99,9 @@ const reviewReducer = (state = {}, action) => {
         case UPDATE:
             newState = state;
             newState[action.review.id] = action.review;
-            // console.log('from update reducer:', newState)
             return newState;
         case DELETE:
-            newState = state;
+            newState = {...state};
             delete newState[action.reviewId.id];
             return newState
         default:

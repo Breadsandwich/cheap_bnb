@@ -12,7 +12,7 @@ const EditReviewForm = ({singleReview, closeModal}) => {
     const sessionUser = useSelector((state) => state?.session?.user)
     const user_id = useSelector(state => state?.session?.user?.id)
 
-
+    const [errors, setErrors] = useState([]);
     const [rating, setRating] = useState(singleReview.rating)
     const [review, setReview] = useState(singleReview.review)
 
@@ -37,6 +37,12 @@ const EditReviewForm = ({singleReview, closeModal}) => {
     return (
         <>
             <div className='create_review_container'>
+                <div>
+                    {errors.map((error, ind) => (
+                    <div className='errors' key={ind}>{error}</div>
+                    ))}
+                </div>
+
                 <form className='create_review_form' onSubmit={handleSubmit}>
                     <input
                         type="number"
