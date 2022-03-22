@@ -13,14 +13,17 @@ const NavBar = () => {
 
 
   let sessionLinks;
-  let hostSpot;
+  let userLinks;
+  let myBookings
   if (sessionUser) {
     sessionLinks = <LogoutButton />;
-    hostSpot = (
+    userLinks = (
       <>
         <NavLink className={'navlink_btns'} to='/spots/hosting' exact={true}>Host a Spot</NavLink>
+        <NavLink className={'navlink_btns'} to={`/bookings/${sessionUser?.id}`} exact={true}>My Bookings</NavLink>
       </>
     )
+
 
   } else {
     sessionLinks = (
@@ -29,7 +32,8 @@ const NavBar = () => {
         <SignupFormModal to='/signup' exact={true}/>
       </div>
     )
-    hostSpot = null;
+    userLinks = null;
+
     // publishAndSearch = null;
   }
   return (
@@ -42,7 +46,7 @@ const NavBar = () => {
         </li>
 
         <li className='session-links'>
-          {hostSpot}
+          {userLinks}
           {sessionLinks}
         </li>
       </ul>

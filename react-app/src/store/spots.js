@@ -109,7 +109,7 @@ const spotReducer = (state = {}, action) => {
             return newState
 
         case GET_ONE:
-            newState = {...state};
+            newState = state;
             newState[action.spot.id] = action.spot;
         return newState;
         case UPDATE:

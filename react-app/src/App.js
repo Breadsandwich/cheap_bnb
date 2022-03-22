@@ -12,6 +12,7 @@ import NavBar from './components/NavBar/NavBar';
 import Spots from './components/Spots/Spots';
 import SpotPage from './components/Spots/SpotPage/SpotPage';
 import NewSpot from './components/Spots/NewSpot/NewSpot';
+import UserBookings from './components/UserBookingPage/UserBookings';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
@@ -49,6 +50,10 @@ function App() {
         <Route path='/spots/:spotId' exact={true}>
           <SpotPage />
         </Route>
+
+        <ProtectedRoute path='/bookings/:userId' >
+          <UserBookings />
+        </ProtectedRoute>
 
         <Route path={'/'}>
           <PageNotFound path='/' />
