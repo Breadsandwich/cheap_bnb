@@ -6,7 +6,7 @@ const DELETE = 'bookings/DELETE';
 const create = booking => ({ type: CREATE, booking });
 const getAll = bookings => ({ type: GET_ALL, bookings });
 const update = booking => ({ type: UPDATE, booking });
-const destroy = bookingId => ({ type: DELETE, bookingId });
+const destroy = userId => ({ type: DELETE, userId });
 
 
 export const createBooking = (booking) => async (dispatch) => {
@@ -31,8 +31,12 @@ export const createBooking = (booking) => async (dispatch) => {
 };
 
 
-export const getBookings = (bookingId) => async (dispatch) => {
-    const response = await fetch(`/api/bookings/${bookingId}`);
+export const getBookings = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/bookings/${userId}`, {
+
+    });
+
+    console.log('from getBookings thunk: ', response)
 
     if (response.ok) {
         const data = await response.json();
@@ -66,8 +70,8 @@ export const updateBooking = (booking, id) => async (dispatch) => {
 };
 
 
-export const deleteBooking = (bookingId) => async (dispatch) => {
-    const response = await fetch(`/api/bookings/${bookingId}`, {
+export const deleteBooking = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/bookings/${userId}`, {
         method: 'DELETE'
     });
 
@@ -89,20 +93,17 @@ const bookingReducer = (state = {}, action) => {
             return newState;
         case GET_ALL:
             newState = {};
-            action.bookings['all_my_bookings'].forEach(booking => newState[booking.id] = booking);
+            action.bookings['bookings'].forEach(booking => newState[booking.id] = booking);
+            // action.bookings.forEach(booking => newState[booking.id] = booking)
             return newState
 
-        case GET_ONE:
-            newState = {...state};
-            newState[action.booking.id] = action.booking;
-        return newState;
         case UPDATE:
             newState = state;
             newState[action.booking.id] = action.booking;
             return newState;
         case DELETE:
             newState = state;
-            delete newState[action.bookingId.id];
+            delete newState[action.userId.id];
             return newState
         default:
             return state

@@ -27,5 +27,6 @@ class Booking(db.Model):
       "guests": self.guests,
       "created_at": self.created_at,
       "updated_at": self.updated_at,
+      "spot": self.spots.to_dict()
 
     }

@@ -1,0 +1,16 @@
+.booking_details_card {
+    border: dotted black 0.5px;
+    background-color: cyan;
+}
+
+.booking_card_img{
+    max-width: 250px;
+    max-height: 250px;
+}
+
+
+.date_box {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+}
