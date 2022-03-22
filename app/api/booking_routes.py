@@ -47,10 +47,10 @@ def create_booking():
 
 
 # -- read bookings --
-@booking_routes.route('/<int:id>', methods=['GET'])
+@booking_routes.route('/<int:userId>', methods=['GET'])
 # @login_required
-def get_bookings(id):
-  all_my_bookings = Booking.query.filter(Booking.user_id == id).all()
+def get_bookings(userId):
+  all_my_bookings = Booking.query.filter(Booking.user_id == userId).all()
 
   return {'all_my_bookings': [booking.to_dict() for booking in all_my_bookings]}
 

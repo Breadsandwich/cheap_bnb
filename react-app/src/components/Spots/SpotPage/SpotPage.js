@@ -6,6 +6,7 @@ import { getOneSpot } from "../../../store/spots";
 import SpotFormModal from "./SpotModal";
 import { SpotDeleteButton } from "../../utils/Buttons";
 import ReviewsComponent from "../../Reviews/Reviews";
+import CreateBookingComponent from "../../Bookings/CreateBooking";
 
 
 const SpotPage = () => {
@@ -38,6 +39,12 @@ const SpotPage = () => {
             <div className="owner_btns">
                 <SpotFormModal name='Edit Spot' edit={true} spot={spot}/>
                 <SpotDeleteButton spotId={spot?.id} />
+            </div>
+
+            <hr className="seperator"/>
+
+            <div className="booking_section">
+                <CreateBookingComponent />
             </div>
 
             <hr className="seperator"/>
