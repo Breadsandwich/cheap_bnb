@@ -30,6 +30,7 @@ const UserBookings = () => {
                         </div>
                         <h3>{booking.spot.spot_name} - ${booking.spot.price}/day</h3>
                         <p>{booking.spot.address}, {booking.spot.city}, {booking.spot.state}</p>
+                        <p>My guests: {booking.guests}</p>
                         <div className="date_box">
                             <p>check-in: {booking.start_date} | checkout: {booking.end_date}</p>
 
