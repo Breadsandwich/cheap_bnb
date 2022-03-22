@@ -3,6 +3,8 @@ import { createReview, getReviews } from '../../store/reviews';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ReviewFormModal from './EditReview/ReviewModal';
+import { ReviewDeleteButton } from '../utils/Buttons';
+import DeleteReviewButton from './DeleteReview';
 import './Reviews.css'
 
 const ReviewsComponent = ({ spot }) => {
@@ -53,6 +55,12 @@ const ReviewsComponent = ({ spot }) => {
         <>
             <div className='reviews_component'>
                 <div className='create_review_container'>
+                <div>
+                        {errors.map((error, ind) => (
+                        <div className='errors' key={ind}>{error}</div>
+                        ))}
+                    </div>
+
                     <form className='create_review_form' onSubmit={handleNewReview}>
                         <input
                             type="number"
@@ -87,7 +95,8 @@ const ReviewsComponent = ({ spot }) => {
                         </div>
                         <div className='review_edit_delete_btn'>
                             <ReviewFormModal singleReview={singleReview} />
-                            <button>delete</button>
+                            <DeleteReviewButton singleReview={singleReview} spot={spot} />
+                            {/* <ReviewDeleteButton reviewId={singleReview?.id} spotId={spot?.id}/> */}
 
                         </div>
                     </li>

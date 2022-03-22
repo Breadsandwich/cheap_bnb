@@ -12,15 +12,27 @@ const SignUpForm = ({setShowModal}) => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  // const onSignUp = async (e) => {
+  //   e.preventDefault();
+  //   if (password === repeatPassword) {
+  //     const data = await dispatch(signUp(username, email, password, repeatPassword));
+  //     if (data) {
+  //       setErrors(data)
+  //     }
+  //   }
+  // };
+
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setErrors(data)
-      }
+
+    const data = await dispatch(signUp(username, email, password, repeatPassword));
+    if (data?.errors) setErrors(data?.errors)
+    if (data) {
+      setErrors(data)
     }
+
   };
+
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
