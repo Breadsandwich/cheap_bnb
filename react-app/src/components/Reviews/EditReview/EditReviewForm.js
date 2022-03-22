@@ -26,10 +26,15 @@ const EditReviewForm = ({singleReview, closeModal}) => {
             rating
         }
 
-        await dispatch(updateReview(payload))
-        await dispatch(getReviews(spotId))
-        closeModal();
-        // return history.push(`/spots/${spotId}`)
+        const updatedReview = await dispatch(updateReview(payload))
+
+        if (updatedReview?.errors) {
+            setErrors(updatedReview?.errors)
+        } else {
+            await dispatch(getReviews(spotId))
+
+            closeModal();
+        }
 
     }
 
