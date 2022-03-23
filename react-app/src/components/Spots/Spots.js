@@ -41,7 +41,7 @@ const Spots = () => {
                                     </div>
 
                                     <div className="bottom_half">
-                                        <h5>${spot?.price}/day</h5>
+                                        <h5>${spot?.price}/night</h5>
                                     </div>
                                 </div>
                             </div>

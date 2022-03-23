@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './signupForm.css'
 
 const SignUpForm = ({setShowModal}) => {
   const [errors, setErrors] = useState([]);
@@ -55,13 +56,13 @@ const SignUpForm = ({setShowModal}) => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form onSubmit={onSignUp} className='signup_form'>
       <div>
         {errors.map((error, ind) => (
           <div className='errors' key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className='form-input'>
         <label>User Name</label>
         <input
           type='text'
@@ -70,7 +71,7 @@ const SignUpForm = ({setShowModal}) => {
           value={username}
         ></input>
       </div>
-      <div>
+      <div className='form-input'>
         <label>Email</label>
         <input
           type='text'
@@ -79,7 +80,7 @@ const SignUpForm = ({setShowModal}) => {
           value={email}
         ></input>
       </div>
-      <div>
+      <div className='form-input'>
         <label>Password</label>
         <input
           type='password'
@@ -88,7 +89,7 @@ const SignUpForm = ({setShowModal}) => {
           value={password}
         ></input>
       </div>
-      <div>
+      <div className='form-input'>
         <label>Repeat Password</label>
         <input
           type='password'

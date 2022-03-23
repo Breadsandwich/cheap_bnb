@@ -1,5 +1,16 @@
-.errors{
-    color: red;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.login_form {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 50px;
+}
+
+.btn_div {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }

@@ -38,7 +38,7 @@ const SpotPage = () => {
                 <h2>Hosted by: {spot?.host}</h2>
                 <p>guest limit: {spot?.guest_limit} persons</p>
                 <p>Description of spot: {spot?.description}</p>
-                <h4>book for: ${spot?.price}/day</h4>
+                <h4>book for: ${spot?.price}/night</h4>
             </div>
             <div className="owner_btns">
             {sessionUser?.id === spot?.user_id && <>

@@ -82,3 +82,10 @@ button:hover {
     position: relative;
     justify-content: center;
 }
+
+
+.errors{
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
