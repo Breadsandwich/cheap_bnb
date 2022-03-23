@@ -8,4 +8,12 @@
     display: flex;
     position: relative;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit_btn_div {
+    display: flex;
+    position: relative;
+    justify-content: center;
 }

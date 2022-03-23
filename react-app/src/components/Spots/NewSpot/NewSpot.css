@@ -10,12 +10,20 @@
 }
 
 .left_side {
-    background-color: aqua;
+    background-image: url('../../../images/newspot_side_photo.jpg');
+    background-position: right;
     grid-area: a;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
 }
 
 .right_side {
     position: static;
-    background-color: coral;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     grid-area: b;
 }

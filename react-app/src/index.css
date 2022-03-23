@@ -28,6 +28,7 @@ textarea {
     border-radius: 5px;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px #e5e5e5;
+    resize: none;
 }
 
 textarea:hover {
@@ -67,4 +68,17 @@ button {
 
 button:hover {
     border: white solid 0.5px;
+}
+
+
+.form-input {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin: 5px;
+}
+.form-input > label {
+    display: flex;
+    position: relative;
+    justify-content: center;
 }
