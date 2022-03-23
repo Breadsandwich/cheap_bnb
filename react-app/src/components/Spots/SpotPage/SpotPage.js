@@ -7,6 +7,7 @@ import SpotFormModal from "./SpotModal";
 import { SpotDeleteButton } from "../../utils/Buttons";
 import ReviewsComponent from "../../Reviews/Reviews";
 // import CreateBookingComponent from "../../Bookings/CreateBooking";
+import './SpotPage.css'
 
 
 const SpotPage = () => {
@@ -22,18 +23,20 @@ const SpotPage = () => {
 
 
     return (
-        <div>
+        <div className="spot_body">
+            <div>
+
+            <h1>{spot?.spot_name}</h1>
+            <p>{spot?.address}, {spot?.city}, {spot?.state}</p>
             <div className="images_container">
                 <div>
-                    <img src={spot?.image_url} alt="spot_image" />
+                    <img src={spot?.image_url} alt="spot_image" id="spot_img" />
                 </div>
 
             </div>
             <div>
-                <h1>spot page</h1>
-                <h1>{spot?.spot_name}</h1>
                 <h2>Hosted by: {spot?.host}</h2>
-                <h3>{spot?.address}, {spot?.city}, {spot?.state}</h3>
+                <p>guest limit: {spot?.guest_limit} persons</p>
                 <p>Description of spot: {spot?.description}</p>
                 <h4>book for: ${spot?.price}/day</h4>
             </div>
@@ -47,11 +50,12 @@ const SpotPage = () => {
             <hr className="seperator"/>
 
 
-                <h1>reviews section</h1>
+            <h1>reviews</h1>
             <div className="reviews_container">
                 <div>
                     <ReviewsComponent spot={spot}/>
                 </div>
+            </div>
             </div>
 
         </div>

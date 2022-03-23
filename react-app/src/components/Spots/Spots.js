@@ -20,9 +20,9 @@ const Spots = () => {
     return (
         <div className="spots_body_container">
             <div className="left_container">
-                <h1>left container</h1>
+                <h1>Explore Spots</h1>
                 <div className="all_spots_container">
-                    {spots.map((spot) => (
+                    {spots.reverse().map((spot) => (
                         <a key={spot?.id} href={`/spots/${spot?.id}`}>
                             <div className="spot_box">
                                 <div className="spot_name">

@@ -14,13 +14,13 @@ const NavBar = () => {
 
   let sessionLinks;
   let userLinks;
-  let myBookings
+  // let myBookings
   if (sessionUser) {
     sessionLinks = <LogoutButton />;
     userLinks = (
       <>
         <NavLink className={'navlink_btns'} to='/spots/hosting' exact={true}>Host a Spot</NavLink>
-        <NavLink className={'navlink_btns'} to={`/bookings/${sessionUser?.id}`} exact={true}>My Bookings</NavLink>
+        {/* <NavLink className={'navlink_btns'} to={`/bookings/${sessionUser?.id}`} exact={true}>My Bookings</NavLink> */}
       </>
     )
 

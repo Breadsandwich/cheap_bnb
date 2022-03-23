@@ -3,7 +3,6 @@ import { createReview, getReviews } from '../../store/reviews';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ReviewFormModal from './EditReview/ReviewModal';
-import { ReviewDeleteButton } from '../utils/Buttons';
 import DeleteReviewButton from './DeleteReview';
 import './Reviews.css'
 
@@ -85,26 +84,26 @@ const ReviewsComponent = ({ spot }) => {
                                 >
                             </textarea>
                         </fieldset>
-                        <button type='submit'>New Review</button>
+                        <button type='submit' className='new_review_btn'>New Review</button>
                     </form>
                     </>}
                 </div>
 
 
             <div className='posted_reviews_container'>
-                {reviews?.map(singleReview => (
-                    <div className='listed_reviews' key={singleReview?.id}>
-                        <h3>Review by: {singleReview?.owner}</h3>
+                {reviews?.reverse().map(singleReview => (
+                    <div className='single_review' key={singleReview?.id}>
                         <div className='review_box'>
-                            <p>{singleReview?.review}</p>
-                        </div>
-                            rating: {singleReview?.rating}/5
-                        <div>
-                        </div>
-                        <div className='review_edit_delete_btn'>
-                        {sessionUser?.id === singleReview?.user_id && <>
-                            <ReviewFormModal singleReview={singleReview} />
-                            <DeleteReviewButton singleReview={singleReview} spot={spot} />
+                            <h3>Review by: {singleReview?.owner}</h3>
+                                <p>{singleReview?.review}</p>
+                            </div>
+                                rating: {singleReview?.rating}/5
+                            <div>
+                            </div>
+                            <div className='review_edit_delete_btn'>
+                            {sessionUser?.id === singleReview?.user_id && <>
+                                <ReviewFormModal singleReview={singleReview} />
+                                <DeleteReviewButton singleReview={singleReview} spot={spot} />
                             </>}
                         </div>
                     </div>

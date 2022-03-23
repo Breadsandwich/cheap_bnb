@@ -20,3 +20,51 @@ body, html{
 li {
     list-style: none;
 }
+
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #e5e5e5;
+}
+
+textarea:hover {
+    border: 1px solid white;
+}
+
+select {
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #e5e5e5;
+}
+
+select:hover {
+    border: 1px solid white;
+}
+
+fieldset {
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #e5e5e5;
+}
+
+
+
+button {
+    margin-left: 2px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    border: #e5e5e5 solid 0.5px;
+    border-radius: 5%;
+}
+
+button:hover {
+    border: white solid 0.5px;
+}
