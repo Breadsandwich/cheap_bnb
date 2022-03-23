@@ -40,8 +40,8 @@ const NavBar = () => {
     <nav className='nav-container'>
       <ul className='navbar'>
         <li className='home'>
-          <NavLink to='/' exact={true} activeClassName='active' >
-            Home
+          <NavLink to='/' exact={true} activeClassName='active' className={'home_btn'}>
+            cheapbnb
           </NavLink>
         </li>
 
