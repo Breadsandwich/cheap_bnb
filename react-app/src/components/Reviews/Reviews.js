@@ -24,7 +24,7 @@ const ReviewsComponent = ({ spot }) => {
 
     const [errors, setErrors] = useState([]);
     const [review, setReview] = useState('');
-    const [rating, setRating] = useState('0');
+    const [rating, setRating] = useState('1');
 
     const handleNewReview = async (e) => {
         e.preventDefault();
@@ -62,22 +62,34 @@ const ReviewsComponent = ({ spot }) => {
                     </div>
 
                     <form className='create_review_form' onSubmit={handleNewReview}>
-                        <input
+                        {/* <input
                             type="number"
                             placeholder='rating: 1 - 5'
                             value={rating}
                             onChange={e => setRating(e.target.value)}
-                        />
+                        /> */}
+                        <fieldset>
+                            <div className='rating_container'>
+                                <span>rating</span>
+                                <select name="rating" id="select_rating" value={rating} onChange={e => setRating(e.target.value)}>
+                                    <option value="1">★</option>
+                                    <option value="2">★★</option>
+                                    <option value="3">★★★</option>
+                                    <option value="4">★★★★</option>
+                                    <option value="5">★★★★★</option>
+                                </select>
+                            </div>
 
-                        <textarea
-                            className='review_textarea'
-                            placeholder='This place is...'
-                            cols="50"
-                            rows="5"
-                            value={review}
-                            onChange={e => setReview(e.target.value)}
-                        >
-                        </textarea>
+                            <textarea
+                                className='review_textarea'
+                                placeholder='Write a quick review?'
+                                cols="50"
+                                rows="5"
+                                value={review}
+                                onChange={e => setReview(e.target.value)}
+                                >
+                            </textarea>
+                        </fieldset>
                         <button type='submit'>New Review</button>
                     </form>
                 </div>

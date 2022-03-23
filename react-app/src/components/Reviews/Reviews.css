@@ -23,3 +23,15 @@
     position: relative;
     flex-direction: column;
 }
+
+.rating_container{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+}
+
+#select_rating{
+    display: flex;
+    position: relative;
+
+}
