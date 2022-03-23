@@ -12,11 +12,12 @@ const SpotPage = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
     const sessionUser = useSelector((state) => state?.session?.user)
-    // console.log('who is session user:  ', sessionUser.id, sessionUser.username)
+    console.log('who is session user:  ', sessionUser)
 
     useEffect(() => { dispatch(getOneSpot(spotId)) }, [ dispatch, spotId ])
     const spot = useSelector(state => state?.spotReducer[spotId])
-    // console.log('spot object from spotpage: ',spot)
+
+
 
 
     return (
@@ -36,8 +37,10 @@ const SpotPage = () => {
                 <h4>book for: ${spot?.price}/day</h4>
             </div>
             <div className="owner_btns">
+            {sessionUser?.id === spot?.user_id && <>
                 <SpotFormModal name='Edit Spot' edit={true} spot={spot}/>
                 <SpotDeleteButton spotId={spot?.id} />
+            </>}
             </div>
 
             <hr className="seperator"/>

@@ -61,8 +61,8 @@ const ReviewsComponent = ({ spot }) => {
                         ))}
                     </div>
 
+                    {sessionUser !== null && <>
                     <form className='create_review_form' onSubmit={handleNewReview}>
-
                         <fieldset>
                             <div className='rating_container'>
                                 <span>rating</span>
@@ -87,6 +87,7 @@ const ReviewsComponent = ({ spot }) => {
                         </fieldset>
                         <button type='submit'>New Review</button>
                     </form>
+                    </>}
                 </div>
 
 
@@ -101,10 +102,10 @@ const ReviewsComponent = ({ spot }) => {
                         <div>
                         </div>
                         <div className='review_edit_delete_btn'>
+                        {sessionUser?.id === singleReview?.user_id && <>
                             <ReviewFormModal singleReview={singleReview} />
                             <DeleteReviewButton singleReview={singleReview} spot={spot} />
-                            {/* <ReviewDeleteButton reviewId={singleReview?.id} spotId={spot?.id}/> */}
-
+                            </>}
                         </div>
                     </div>
                 ))}

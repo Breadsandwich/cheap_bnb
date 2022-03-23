@@ -1,23 +1,12 @@
 import { Modal } from '../../../context/Modal';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-// import match from '../../components/utils'
-import SpotForm from '../SpotForm/Spot_form';
 import EditSpotForm from './EditForm';
 
 
-
-function SpotFormModal({ name='Host', edit=false, spot=null }) {
+function SpotFormModal({ name='Host', edit=false, spot }) {
     const [ showModal, setShowModal ] = useState(false);
 
-    // const sessionId = useSelector(state => state?.session?.user?.id)
-    // const userId = spot.user_id
-    // console.log('##############', )
-
-    // const matchingToSessionUser = match(sessionId, userId)
-
     return (
-        // matchingToSessionUser &&(
             <div className='edit-spot-modal-button-container'>
                 <button className='edit-spot-modal' onClick={e => setShowModal(true)}>{name}</button>
                 {showModal && (
@@ -26,7 +15,6 @@ function SpotFormModal({ name='Host', edit=false, spot=null }) {
                     </Modal>
                 )}
             </div>
-        // )
     );
 }
 
