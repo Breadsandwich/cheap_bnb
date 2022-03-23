@@ -46,7 +46,7 @@ const ReviewsComponent = ({ spot }) => {
         if (postReview) {
             await dispatch(getReviews(spotId))
             if (postReview?.errors) setErrors(postReview?.errors)
-            setRating('')
+            setRating('1')
             setReview('')
         }
     }
@@ -62,12 +62,7 @@ const ReviewsComponent = ({ spot }) => {
                     </div>
 
                     <form className='create_review_form' onSubmit={handleNewReview}>
-                        {/* <input
-                            type="number"
-                            placeholder='rating: 1 - 5'
-                            value={rating}
-                            onChange={e => setRating(e.target.value)}
-                        /> */}
+
                         <fieldset>
                             <div className='rating_container'>
                                 <span>rating</span>
@@ -95,9 +90,9 @@ const ReviewsComponent = ({ spot }) => {
                 </div>
 
 
-            <ul className='posted_reviews_container'>
+            <div className='posted_reviews_container'>
                 {reviews?.map(singleReview => (
-                    <li className='listed_reviews' key={singleReview?.id}>
+                    <div className='listed_reviews' key={singleReview?.id}>
                         <h3>Review by: {singleReview?.owner}</h3>
                         <div className='review_box'>
                             <p>{singleReview?.review}</p>
@@ -111,9 +106,9 @@ const ReviewsComponent = ({ spot }) => {
                             {/* <ReviewDeleteButton reviewId={singleReview?.id} spotId={spot?.id}/> */}
 
                         </div>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
           </div>
         </>
     )
