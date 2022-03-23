@@ -21,18 +21,6 @@ const Homepage = () => {
                 </div>
             </div>
 
-            <div className="next_trip_container">
-                <div className="next_trip_elements">
-                    <h2>Inspiration for your next trip</h2>
-                    <div className="inspiration_cards">
-                        <div className="cards">card 1</div>
-                        <div className="cards">card 2</div>
-                        <div className="cards">card 3</div>
-                        <div className="cards">card 4</div>
-                    </div>
-                </div>
-
-            </div>
             <Footer />
         </div>
     )
