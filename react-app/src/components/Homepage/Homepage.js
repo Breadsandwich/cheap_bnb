@@ -15,8 +15,8 @@ const Homepage = () => {
             <div className="black_background">
                 <div className="big_card">
                     <div className="big_card_elements">
-                        <h2>Let your curiosity do the booking</h2>
-                        <NavLink className={'navlink_btns'} to={'/spots'} exact={true}>I'm Flexable</NavLink>
+                        <h2 className="card_text">Let your curiosity do the booking</h2>
+                        <NavLink className={'explore_btn'} to={'/spots'} exact={true}>Explore</NavLink>
                     </div>
                 </div>
             </div>

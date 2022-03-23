@@ -55,8 +55,7 @@
 }
 
 .spot_box_left {
-    background-color: aqua;
-    width: 400px;
+    max-width: 400px;
 }
 
 .spot_img{
