@@ -24,7 +24,7 @@ const ReviewsComponent = ({ spot }) => {
 
     const [errors, setErrors] = useState([]);
     const [review, setReview] = useState('');
-    const [rating, setRating] = useState('0');
+    const [rating, setRating] = useState('1');
 
     const handleNewReview = async (e) => {
         e.preventDefault();
@@ -46,7 +46,7 @@ const ReviewsComponent = ({ spot }) => {
         if (postReview) {
             await dispatch(getReviews(spotId))
             if (postReview?.errors) setErrors(postReview?.errors)
-            setRating('')
+            setRating('1')
             setReview('')
         }
     }
@@ -61,31 +61,39 @@ const ReviewsComponent = ({ spot }) => {
                         ))}
                     </div>
 
+                    {sessionUser !== null && <>
                     <form className='create_review_form' onSubmit={handleNewReview}>
-                        <input
-                            type="number"
-                            placeholder='rating: 1 - 5'
-                            value={rating}
-                            onChange={e => setRating(e.target.value)}
-                        />
+                        <fieldset>
+                            <div className='rating_container'>
+                                <span>rating</span>
+                                <select name="rating" id="select_rating" value={rating} onChange={e => setRating(e.target.value)}>
+                                    <option value="1">★</option>
+                                    <option value="2">★★</option>
+                                    <option value="3">★★★</option>
+                                    <option value="4">★★★★</option>
+                                    <option value="5">★★★★★</option>
+                                </select>
+                            </div>
 
-                        <textarea
-                            className='review_textarea'
-                            placeholder='This place is...'
-                            cols="50"
-                            rows="5"
-                            value={review}
-                            onChange={e => setReview(e.target.value)}
-                        >
-                        </textarea>
+                            <textarea
+                                className='review_textarea'
+                                placeholder='Write a quick review?'
+                                cols="50"
+                                rows="5"
+                                value={review}
+                                onChange={e => setReview(e.target.value)}
+                                >
+                            </textarea>
+                        </fieldset>
                         <button type='submit'>New Review</button>
                     </form>
+                    </>}
                 </div>
 
 
-            <ul className='posted_reviews_container'>
+            <div className='posted_reviews_container'>
                 {reviews?.map(singleReview => (
-                    <li className='listed_reviews' key={singleReview?.id}>
+                    <div className='listed_reviews' key={singleReview?.id}>
                         <h3>Review by: {singleReview?.owner}</h3>
                         <div className='review_box'>
                             <p>{singleReview?.review}</p>
@@ -94,14 +102,14 @@ const ReviewsComponent = ({ spot }) => {
                         <div>
                         </div>
                         <div className='review_edit_delete_btn'>
+                        {sessionUser?.id === singleReview?.user_id && <>
                             <ReviewFormModal singleReview={singleReview} />
                             <DeleteReviewButton singleReview={singleReview} spot={spot} />
-                            {/* <ReviewDeleteButton reviewId={singleReview?.id} spotId={spot?.id}/> */}
-
+                            </>}
                         </div>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
           </div>
         </>
     )
