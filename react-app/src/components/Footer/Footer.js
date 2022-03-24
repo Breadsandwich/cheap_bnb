@@ -8,13 +8,13 @@ const Footer = () => {
                     <div>Developed by: Daniel Thai</div>
 
                     <div className='social_icon'>
-                        <a href="https://github.com/Breadsandwich" className="footer-icon" target='_blank'>
+                        <a href="https://github.com/Breadsandwich" className="footer-icon" target='_blank' rel='noreferrer'>
                         <i className='fab fa-github' />
                         </a>
                     </div>
 
                     <div className='social_icon'>
-                        <a href="https://www.linkedin.com/in/daniel--thai/" className='footer-icon' target='_blank'>
+                        <a href="https://www.linkedin.com/in/daniel--thai/" className='footer-icon' target='_blank' rel='noreferrer'>
                         <i className='fab fa-linkedin' />
                         </a>
                     </div>

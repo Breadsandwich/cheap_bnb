@@ -10,8 +10,9 @@ const Spots = () => {
     const dispatch = useDispatch();
     const spotsObj = useSelector(state => state?.spotReducer);
     const spots = spotsObj && Object.values(spotsObj)
+
     // console.log('spots?? @@@@@@@@@@@@', spotsObj)
-    console.log('spots?? @@@@@@@@@@@@', spots)
+    // console.log('spots?? @@@@@@@@@@@@', spots)
 
 
     useEffect(() => {

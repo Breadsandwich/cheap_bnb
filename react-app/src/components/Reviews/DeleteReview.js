@@ -1,19 +1,10 @@
 import { deleteReview, getReviews } from "../../store/reviews"
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux"
-// import match from "../../utils/match"
+import { useDispatch } from "react-redux"
 
 
 
 const DeleteReviewButton = ({ singleReview, spot }) => {
     const dispatch = useDispatch();
-    // const history = useHistory();
-    // console.log('@@@@@@@@@@@@@',spot)
-
-    // const sessionId = useSelector(state => state?.session?.user?.id)
-    // const writerId = singleReview.writer_id
-
-    // const matchingToSessionUser = match(sessionId, writerId)
 
 
     const handleDelete = async (e) => {

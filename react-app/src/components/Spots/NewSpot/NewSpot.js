@@ -1,13 +1,13 @@
 import React from "react"
 import './NewSpot.css'
-import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+// import { useDispatch, useSelector } from "react-redux"
+// import { useParams } from "react-router-dom"
 import SpotForm from "../SpotForm/Spot_form"
 
 const NewSpot = () => {
-    const dispatch = useDispatch();
-    const { spotId } = useParams();
-    const sessionUser = useSelector((state) => state?.session?.user)
+    // const dispatch = useDispatch();
+    // const { spotId } = useParams();
+    // const sessionUser = useSelector((state) => state?.session?.user)
 
 
     return (

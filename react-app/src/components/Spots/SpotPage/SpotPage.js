@@ -6,24 +6,27 @@ import { getOneSpot } from "../../../store/spots";
 import SpotFormModal from "./SpotModal";
 import { SpotDeleteButton } from "../../utils/Buttons";
 import ReviewsComponent from "../../Reviews/Reviews";
+// import { useHistory } from "react-router-dom";
 // import CreateBookingComponent from "../../Bookings/CreateBooking";
 import no_image from '../../../images/image-not-found.png'
 import './SpotPage.css'
 
 
 const SpotPage = () => {
+    // const history = useHistory();
     const dispatch = useDispatch();
     const { spotId } = useParams();
     const sessionUser = useSelector((state) => state?.session?.user)
-    console.log('who is session user:  ', sessionUser)
+    const spot = useSelector(state => state?.spotReducer[spotId])
+    // console.log('what is spotId:  ', spotId)
 
     useEffect(() => { dispatch(getOneSpot(spotId)) }, [ dispatch, spotId ])
-    const spot = useSelector(state => state?.spotReducer[spotId])
 
-
+    console.log('from spot page',spotId)
 
 
     return (
+        <>
         <div className="spot_body">
             <div>
 
@@ -74,6 +77,8 @@ const SpotPage = () => {
             </div>
 
         </div>
+        </>
+
     )
 }
 

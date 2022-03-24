@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
+// import ProtectedRoute from './components/auth/ProtectedRoute';
+// import UsersList from './components/UsersList';
+// import User from './components/User';
 import { authenticate } from './store/session';
 import Homepage from './components/Homepage/Homepage';
 import NavBar from './components/NavBar/NavBar';
@@ -40,15 +40,19 @@ function App() {
           <Spots />
         </Route>
 
-        <Route path='/spots/hosting'>
+        <Route path='/spots/hosting' exact={true}>
           <NewSpot />
         </Route>
 
-        <Route path='/spots/:spotId'>
+        <Route path='/spots/:spotId' exact={true}>
           <SpotPage />
         </Route>
 
-        <Route >
+        <Route path='/error'>
+           <PageNotFound />
+        </Route>
+
+        <Route path='/'>
           <PageNotFound />
         </Route>
 

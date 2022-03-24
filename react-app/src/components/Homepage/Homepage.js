@@ -1,7 +1,5 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
 import Footer from "../Footer/Footer";
 import './Homepage.css'
 

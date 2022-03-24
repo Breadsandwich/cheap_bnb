@@ -10,7 +10,7 @@ const ReviewsComponent = ({ spot }) => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
     const sessionUser = useSelector((state) => state?.session?.user)
-    const user_id = useSelector(state => state?.session?.user?.id)
+    // const user_id = useSelector(state => state?.session?.user?.id)
 
 
     const reviewsObj = useSelector(state => state?.reviewReducer);

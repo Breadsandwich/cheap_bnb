@@ -1,16 +1,16 @@
 import React from 'react'
 import { useState } from 'react'
-import { useHistory, useParams} from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useParams} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { updateReview, getReviews } from '../../../store/reviews';
 
 const EditReviewForm = ({singleReview, closeModal}) => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const { spotId } = useParams();
     const id = singleReview.id
-    const sessionUser = useSelector((state) => state?.session?.user)
-    const user_id = useSelector(state => state?.session?.user?.id)
+    // const sessionUser = useSelector((state) => state?.session?.user)
+    // const user_id = useSelector(state => state?.session?.user?.id)
 
     const [errors, setErrors] = useState([]);
     const [rating, setRating] = useState(singleReview.rating)
