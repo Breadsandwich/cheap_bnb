@@ -51,12 +51,17 @@ function App() {
           <SpotPage />
         </Route>
 
+        <Route path='/spots/*' >
+          <PageNotFound />
+        </Route>
+
+
         {/* <ProtectedRoute path='/bookings/:userId' >
           <UserBookings />
         </ProtectedRoute> */}
 
-        <Route path={'/'}>
-          <PageNotFound path='/' />
+        <Route path={'*'}>
+          <PageNotFound />
         </Route>
 
       </Switch>

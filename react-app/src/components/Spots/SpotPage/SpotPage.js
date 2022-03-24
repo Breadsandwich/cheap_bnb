@@ -7,6 +7,7 @@ import SpotFormModal from "./SpotModal";
 import { SpotDeleteButton } from "../../utils/Buttons";
 import ReviewsComponent from "../../Reviews/Reviews";
 // import CreateBookingComponent from "../../Bookings/CreateBooking";
+import no_image from '../../../images/image-not-found.png'
 import './SpotPage.css'
 
 
@@ -30,7 +31,7 @@ const SpotPage = () => {
             <p>{spot?.address}, {spot?.city}, {spot?.state}</p>
             <div className="images_container">
                 <div>
-                    <img src={spot?.image_url} alt="spot_image" id="spot_img" />
+                    <img src={spot?.image_url !== 'no data provided' ? spot?.image_url : no_image} alt="spot_image" id="spot_img" />
                 </div>
 
             </div>

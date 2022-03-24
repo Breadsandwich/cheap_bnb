@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAllSpots } from "../../store/spots";
 import './Spots.css'
+import no_image from '../../images/image-not-found.png'
 
 
 const Spots = () => {
@@ -28,7 +29,7 @@ const Spots = () => {
                                 <div className="spot_box_left">
                                     <img
                                         className="spot_img"
-                                        src={spot?.image_url}
+                                        src={spot?.image_url !== 'no data provided' ? spot?.image_url : no_image}
                                         alt="spot_image"
                                     />
                                 </div>
