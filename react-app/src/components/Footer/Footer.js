@@ -5,7 +5,9 @@ const Footer = () => {
         <div className="footer_container">
             <div className="footer_elements">
                <div className="about_me">
-                    <div>Developed by: Daniel Thai</div>
+                    <div className='developer'>
+                        Developed by: Daniel Thai
+                    </div>
 
                     <div className='social_icon'>
                         <a href="https://github.com/Breadsandwich" className="footer-icon" target='_blank' rel='noreferrer'>
