@@ -31,7 +31,21 @@ const SpotPage = () => {
             <p>{spot?.address}, {spot?.city}, {spot?.state}</p>
             <div className="images_container">
                 <div>
-                    <img src={spot?.image_url !== 'no data provided' ? spot?.image_url : no_image} alt="spot_image" id="spot_img" />
+                    <div
+                        style={{
+                            width:'100%',
+                            height:'690px',
+                            backgroundImage: `url(${spot?.image_url !== 'no data provided' ? spot?.image_url : no_image})`,
+                            backgroundSize: 'cover',
+                            borderRadius: '2%',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center'
+
+                        }}
+                    >
+
+                    </div>
+                    {/* <img src={spot?.image_url !== 'no data provided' ? spot?.image_url : no_image} alt="spot_image" id="spot_img" /> */}
                 </div>
 
             </div>
