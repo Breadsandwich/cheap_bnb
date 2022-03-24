@@ -17,7 +17,7 @@ export const createReview = (review) => async (dispatch) => {
         body: JSON.stringify(review)
     });
 
-    console.log('from createReview thunk:',response)
+    // console.log('from createReview thunk:',response)
 
     if (response.ok) {
         const data = await response.json();
@@ -74,7 +74,7 @@ export const deleteReview = (reviewId) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${reviewId}`, {
         method: 'DELETE'
     });
-    console.log('response from delete review thunk:', response)
+    // console.log('response from delete review thunk:', response)
 
     if (response.ok) {
         const data = await response.json();

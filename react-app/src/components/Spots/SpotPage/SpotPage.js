@@ -1,28 +1,41 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
+// import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getOneSpot } from "../../../store/spots";
+// import { getOneSpot } from "../../../store/spots";
 import SpotFormModal from "./SpotModal";
 import { SpotDeleteButton } from "../../utils/Buttons";
 import ReviewsComponent from "../../Reviews/Reviews";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 // import CreateBookingComponent from "../../Bookings/CreateBooking";
 import no_image from '../../../images/image-not-found.png'
 import './SpotPage.css'
 
 
 const SpotPage = () => {
-    // const history = useHistory();
-    const dispatch = useDispatch();
+    const history = useHistory();
+    // const dispatch = useDispatch();
     const { spotId } = useParams();
     const sessionUser = useSelector((state) => state?.session?.user)
     const spot = useSelector(state => state?.spotReducer[spotId])
-    // console.log('what is spotId:  ', spotId)
+    const spots = useSelector(state => state?.spotReducer)
 
-    useEffect(() => { dispatch(getOneSpot(spotId)) }, [ dispatch, spotId ])
+
+
+    // const spotChecker = useSelector(state => state?.spotReducer[spotId])
+    // console.log('what is spots: @@@@@  ', spots[spotId])
+
+    // useEffect(() => {
+    //     dispatch(getOneSpot(spotId))
+    // }, [ dispatch, spotId ])
+
+
 
     console.log('from spot page',spotId)
+
+    if (spots?.[spotId] === undefined) {
+        history.push('/error')
+    }
 
 
     return (
