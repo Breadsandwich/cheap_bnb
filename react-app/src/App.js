@@ -11,6 +11,7 @@ import Spots from './components/Spots/Spots';
 import SpotPage from './components/Spots/SpotPage/SpotPage';
 import NewSpot from './components/Spots/NewSpot/NewSpot';
 import PageNotFound from './components/PageNotFound/PageNotFound';
+import { getAllSpots } from './store/spots';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -19,6 +20,7 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
+      await dispatch(getAllSpots())
       setLoaded(true);
     })();
   }, [dispatch]);
