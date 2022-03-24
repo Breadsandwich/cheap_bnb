@@ -13,7 +13,9 @@ const NewSpot = () => {
     return (
         <div className="hosting_body_container">
             <div className="left_side">
-                <h2>Let us know about your spot</h2>
+                <div className="left_image_container">
+                    <h1>Tell us about your spot.</h1>
+                </div>
             </div>
 
             <div className="right_side">

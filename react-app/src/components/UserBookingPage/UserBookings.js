@@ -28,7 +28,7 @@ const UserBookings = () => {
                         <div className='booking_card_img'>
                             <img src={booking.spot.image_url} alt={booking.spot.spot_name} />
                         </div>
-                        <h3>{booking.spot.spot_name} - ${booking.spot.price}/day</h3>
+                        <h3>{booking.spot.spot_name} - ${booking.spot.price}/night</h3>
                         <p>{booking.spot.address}, {booking.spot.city}, {booking.spot.state}</p>
                         <p>My guests: {booking.guests}</p>
                         <div className="date_box">

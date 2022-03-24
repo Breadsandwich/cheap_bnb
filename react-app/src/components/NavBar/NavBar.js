@@ -14,13 +14,13 @@ const NavBar = () => {
 
   let sessionLinks;
   let userLinks;
-  let myBookings
+  // let myBookings
   if (sessionUser) {
     sessionLinks = <LogoutButton />;
     userLinks = (
       <>
         <NavLink className={'navlink_btns'} to='/spots/hosting' exact={true}>Host a Spot</NavLink>
-        <NavLink className={'navlink_btns'} to={`/bookings/${sessionUser?.id}`} exact={true}>My Bookings</NavLink>
+        {/* <NavLink className={'navlink_btns'} to={`/bookings/${sessionUser?.id}`} exact={true}>My Bookings</NavLink> */}
       </>
     )
 
@@ -40,8 +40,8 @@ const NavBar = () => {
     <nav className='nav-container'>
       <ul className='navbar'>
         <li className='home'>
-          <NavLink to='/' exact={true} activeClassName='active' >
-            Home
+          <NavLink to='/' exact={true} activeClassName='active' className={'home_btn'}>
+            cheapbnb
           </NavLink>
         </li>
 

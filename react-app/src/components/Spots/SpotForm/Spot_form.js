@@ -93,40 +93,43 @@ const SpotForm = ({ name, edit, spot, closeModal}) => {
                 <div className='errors' key={ind}>{error}</div>
                 ))}
             </div>
+
+            <div className='spot_form_div'>
             <form className="spot_form" onSubmit={handleSubmit}>
                 <FormInput name='Spot name' state={spot_name}  setState={setSpot_name} />
                 <FormTextarea name='description' state={description} setState={setDescription} />
                 <FormInput name='address' state={address} setState={setAddress}/>
                 <FormInput name='city' state={city} setState={setCity} />
 
-                <div>
+                <div className='form-input'>
                     <label htmlFor="state">state</label>
                     <select name="state" value={state} onChange={e => setState(e.target.value)}>
                         {states.map((state) => <option value={state}>{state}</option>)}
                     </select>
                 </div>
 
-                <div>
+                <div className='form-input'>
                     <label htmlFor="price">price</label>
                     <input type="number" value={price} onChange={e => setPrice(e.target.value)} />
                 </div>
 
-                <div>
+                <div className='form-input'>
                     <label htmlFor="guest_limit">max guests</label>
                     <input type="number" value={guest_limit} onChange={e => setGuest_limit(e.target.value)} />
                 </div>
 
-                <div>
+                <div className='form-input'>
+                    <label htmlFor="upload_photo">upload photo</label>
                     <input name='image_url' id='image_url_input' type="file" accept="image/*" onChange={updateImage_url} />
                 </div>
 
 
 
-
-                <div>
+                <div className='submit_btn_div'>
                     <button className='spot_btn' type='submit'>Host Spot</button>
                 </div>
             </form>
+            </div>
 
 
         </div>

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-// import LoginForm from './components/LoginForm/index';
-// import SignUpForm from './components/auth/SignUpForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
@@ -12,7 +10,6 @@ import NavBar from './components/NavBar/NavBar';
 import Spots from './components/Spots/Spots';
 import SpotPage from './components/Spots/SpotPage/SpotPage';
 import NewSpot from './components/Spots/NewSpot/NewSpot';
-import UserBookings from './components/UserBookingPage/UserBookings';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
@@ -43,21 +40,18 @@ function App() {
           <Spots />
         </Route>
 
-        <Route path='/spots/hosting' exact={true}>
+        <Route path='/spots/hosting'>
           <NewSpot />
         </Route>
 
-        <Route path='/spots/:spotId' exact={true}>
+        <Route path='/spots/:spotId'>
           <SpotPage />
         </Route>
 
-        <ProtectedRoute path='/bookings/:userId' >
-          <UserBookings />
-        </ProtectedRoute>
-
-        <Route path={'/'}>
-          <PageNotFound path='/' />
+        <Route >
+          <PageNotFound />
         </Route>
+
 
       </Switch>
     </BrowserRouter>
