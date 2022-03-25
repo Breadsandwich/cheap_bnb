@@ -15,7 +15,7 @@ const DeleteReviewButton = ({ singleReview, spot }) => {
 
     return (
         // matchingToSessionUser && (
-            <button className='comment-delete-btn' onClick={() => handleDelete(singleReview?.id)}
+            <button className='review_delete_btn' onClick={() => handleDelete(singleReview?.id)}
             >Delete</button>
         // )
     )
