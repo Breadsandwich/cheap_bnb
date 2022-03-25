@@ -48,6 +48,11 @@
     background-color: white;
 }
 
+.explore_btn:hover{
+    border: white solid 0.1px;
+    color: rgb(241, 91, 91);
+}
+
 .next_trip_container{
     display: flex;
     position: relative;
