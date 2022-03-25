@@ -89,3 +89,19 @@ button:hover {
     margin-top: 5px;
     margin-bottom: 10px;
 }
+
+
+.edit-spot-modal:hover{
+    border-bottom: #ffae00 solid 0.5px;
+    border-right: #ffae00 solid 0.5px;
+}
+
+.delete:hover{
+    border-bottom: #ff0000 solid 0.5px;
+    border-right: #ff0000 solid 0.5px;
+}
+
+.review_delete_btn:hover{
+    border-bottom: #ff0000 solid 0.5px;
+    border-right: #ff0000 solid 0.5px;
+}

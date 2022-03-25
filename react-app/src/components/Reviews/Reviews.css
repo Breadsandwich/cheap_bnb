@@ -66,3 +66,9 @@
     display: flex;
     flex-direction: row;
 }
+
+
+.new_review_btn:hover{
+    border-bottom:green solid 0.5px;
+    border-right: green solid 0.5px;
+}
