@@ -42,8 +42,4 @@ Here all users can view spot details but only logged in users can edit or delete
 All users can view reviews but only logged in users can create, edit, and delete them.
 ![Reviews](./images/reviewSection.PNG)
 
-## Future plans
- - [ ] create a booking system for users.
- - [ ] search bar to search by location
- - [ ] google maps on explore page
- - [ ] websocket for booking communications
+
