@@ -5,10 +5,10 @@
 
 ## Technologies used
 **Frontend**
-Javascript | Nodejs | React | Redux |  CSS | HTML
+| Javascript | Nodejs | React | Redux |  CSS | HTML |
 
 **Backend**
-Python | Flask | SQLAlchemy | PostgreSQL | AWS S3 |
+| Python | Flask | SQLAlchemy | PostgreSQL | AWS S3 | Docker |
 
 ## Cheapbnb setup
 1. Clone this repository `git clone git@github.com:Breadsandwich/cheap_bnb.git`
