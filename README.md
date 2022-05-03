@@ -1,6 +1,8 @@
 ## Overview
 [Cheapbnb](https://cheap-bnb.herokuapp.com/) was inspired by the popular vacation rental platform [Airbnb](https://www.airbnb.com/).
 
+| [Databse Schema](https://github.com/Breadsandwich/cheap_bnb/wiki/Database-Schema) | [Feature List](https://github.com/Breadsandwich/cheap_bnb/wiki/Feature-List) | [User Stories](https://github.com/Breadsandwich/cheap_bnb/wiki/User-Stories) |
+
 ## Technologies used
 **Frontend**
 Javascript | Nodejs | React | Redux |  CSS | HTML
