@@ -6,6 +6,8 @@ COPY react-app/package*.json ./
 RUN npm ci --only=production
 
 COPY react-app/ ./
+# Set Node.js options for legacy OpenSSL provider
+ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN npm run build
 
 # Production Python stage
@@ -26,6 +28,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         gcc \
         postgresql-client \
+        curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Set work directory
