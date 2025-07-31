@@ -1,0 +1,41 @@
+name: cheap-bnb
+description: A React Flask vacation rental platform inspired by Airbnb
+
+# Build configuration
+build:
+  dockerfile: Dockerfile
+  context: .
+  target: production
+
+# Environment variables
+env:
+  - FLASK_APP=app
+  - FLASK_ENV=production
+  - SQLALCHEMY_ECHO=False
+  - SECRET_KEY=${SECRET_KEY}
+  - DATABASE_URL=${DATABASE_URL}
+  - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+  - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+  - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+  - AWS_S3_BUCKET=${AWS_S3_BUCKET}
+
+# Port configuration
+port: 8000
+
+# Health check
+healthcheck:
+  path: /
+  interval: 30s
+  timeout: 10s
+  retries: 3
+
+# Resource limits
+resources:
+  memory: 512Mi
+  cpu: 0.5
+
+# Auto-scaling
+autoscaling:
+  min: 1
+  max: 3
+  target_cpu_utilization: 70

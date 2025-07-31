@@ -1,31 +1,58 @@
-FROM node:12 AS build-stage
+# Multi-stage build for React frontend
+FROM node:18-alpine AS react-build
 
-WORKDIR /react-app
-COPY react-app/. .
+WORKDIR /app
+COPY react-app/package*.json ./
+RUN npm ci --only=production
 
-# You have to set this because it should be set during build time.
-ENV REACT_APP_BASE_URL=https://cheap-bnb.herokuapp.com/
-
-# Build our React App
-RUN npm install
+COPY react-app/ ./
 RUN npm run build
 
-FROM python:3.9
+# Production Python stage
+FROM python:3.11-slim
 
-# Setup Flask environment
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
-ENV SQLALCHEMY_ECHO=True
+ENV SQLALCHEMY_ECHO=False
 
+# Create non-root user
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+
+# Install system dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        gcc \
+        postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set work directory
+WORKDIR /app
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY . .
+
+# Copy built React app from previous stage
+COPY --from=react-build /app/build ./app/static
+
+# Change ownership to non-root user
+RUN chown -R appuser:appuser /app
+
+# Switch to non-root user
+USER appuser
+
+# Expose port
 EXPOSE 8000
 
-WORKDIR /var/www
-COPY . .
-COPY --from=build-stage /react-app/build/* app/static/
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8000/ || exit 1
 
-# Install Python Dependencies
-RUN pip install -r requirements.txt
-RUN pip install psycopg2
-
-# Run flask environment
-CMD gunicorn app:app
+# Run the application
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "4", "--timeout", "120", "app:app"]
