@@ -38,6 +38,6 @@ greenlet==2.0.2
 Mako==1.2.4
 dnspython==2.4.2
 idna==3.4
-urllib3==2.0.4
+urllib3==1.26.18
 jmespath==1.0.1
 s3transfer==0.6.2
