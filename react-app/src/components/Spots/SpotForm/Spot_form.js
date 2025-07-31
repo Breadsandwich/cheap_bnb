@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSpot, updateSpot } from '../../../store/spots';
+import { getCookie } from '../../../utils/cookies';
 
 import states from '../../utils/statesArr'
 
@@ -50,6 +51,12 @@ const SpotForm = ({ name, edit, spot, closeModal}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
+
+        // Get CSRF token from cookies
+        const csrfToken = getCookie('csrf_token');
+        if (csrfToken) {
+            formData.append('csrf_token', csrfToken);
+        }
 
         formData.append('user_id', user_id);
         formData.append('spot_name', spot_name);

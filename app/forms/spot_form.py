@@ -11,5 +11,5 @@ class SpotForm(FlaskForm):
     state = StringField('state', validators=[DataRequired(message='State field cannot be left blank')])
     price = DecimalField('price', validators=[DataRequired(message='Price field cannot be left blank or zero.'), NumberRange(min=1, max=1000, message='Price must be between 1 and 1000.')])
     guest_limit = IntegerField('guests', validators=[DataRequired(message='Please enter a guest limit'), NumberRange(min=1, max=15, message='Guest limit must be between 1 and 15 guests.')])
-    image_url = StringField('image url')
+    image_url = FileField('image url')
     submit = SubmitField('submit')

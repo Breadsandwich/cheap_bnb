@@ -1,46 +1,47 @@
 from app.models import db, Booking
+from datetime import datetime
 
 def seed_bookings():
     booking_1 = Booking(
         user_id = 1,
         spot_id = 1,
-        start_date = '2022-04-10',
-        end_date = '2022-04-12',
+        start_date = datetime.strptime('2022-04-10', '%Y-%m-%d').date(),
+        end_date = datetime.strptime('2022-04-12', '%Y-%m-%d').date(),
         guests = 1
     )
     booking_2 = Booking(
         user_id = 1,
         spot_id = 2,
-        start_date = '2022-05-09',
-        end_date = '2022-05-15',
+        start_date = datetime.strptime('2022-05-09', '%Y-%m-%d').date(),
+        end_date = datetime.strptime('2022-05-15', '%Y-%m-%d').date(),
         guests = 1
     )
     booking_3 = Booking(
         user_id = 2,
         spot_id = 2,
-        start_date = '2022-04-09',
-        end_date = '2022-04-15',
+        start_date = datetime.strptime('2022-04-09', '%Y-%m-%d').date(),
+        end_date = datetime.strptime('2022-04-15', '%Y-%m-%d').date(),
         guests = 1
     )
     booking_4 = Booking(
         user_id = 2,
         spot_id = 2,
-        start_date = '2022-05-20',
-        end_date = '2022-05-22',
+        start_date = datetime.strptime('2022-05-20', '%Y-%m-%d').date(),
+        end_date = datetime.strptime('2022-05-22', '%Y-%m-%d').date(),
         guests = 1
     )
     booking_5 = Booking(
         user_id = 3,
         spot_id = 2,
-        start_date = '2022-05-19',
-        end_date = '2022-05-20',
+        start_date = datetime.strptime('2022-05-19', '%Y-%m-%d').date(),
+        end_date = datetime.strptime('2022-05-20', '%Y-%m-%d').date(),
         guests = 1
     )
     booking_6 = Booking(
         user_id = 3,
         spot_id = 2,
-        start_date = '2022-06-09',
-        end_date = '2022-06-15',
+        start_date = datetime.strptime('2022-06-09', '%Y-%m-%d').date(),
+        end_date = datetime.strptime('2022-06-15', '%Y-%m-%d').date(),
         guests = 1
     )
 
